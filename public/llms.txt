@@ -1,0 +1,49 @@
+# Sprinkler Design NZ
+> New Zealand's leading independent BIM fire protection design and consulting firm.
+
+## About
+
+Sprinkler Design NZ (trading as Sprinkler Design Ltd) is New Zealand's premier independent fire protection design consultancy. Founded by Mitch Buckley — a 20+ year industry veteran — we combine deep trade knowledge with cutting-edge BIM technology to deliver precise, code-compliant fire protection across New Zealand.
+
+We are a fully independent consultancy with no conflicts of interest, serving clients in Auckland, Wellington, Christchurch, Hamilton, and nationwide.
+
+## Services
+
+- **Fire Protection Consulting** — Independent end-to-end consultancy including PS1 authorship and PS4 construction monitoring for fire sprinklers, fire alarms, gas suppression, and all system types.
+- **BIM Fire Protection Design & Coordination** — 3D modelling and coordination using Autodesk Revit, BIM360, and Revizto. We produce shop drawings and eliminate costly redesigns through clash-free BIM coordination.
+- **Fire Protection Design for Construction** — Full lifecycle design from concept to construction documentation, covering deluge & preaction systems, foam suppression, water spray, and more.
+- **Special Hazards Fire Suppression** — Bespoke solutions for high-risk environments: gas suppression, foam systems, water spray, and deluge systems.
+- **3D Point Cloud Scanning** — Laser scanning technology capturing as-built data for retrofit projects and BIM integration.
+- **BIM Services Management & Coordination** — Independent BIM management, BIM Execution Plans (BEP), multi-discipline coordination, and quality control.
+
+## Key Projects
+
+- Taranaki Base Hospital – Stage 2 (Healthcare)
+- Te Kaha – Canterbury Multi-Use Arena (Sports & Entertainment)
+- The Living Pā (Cultural)
+- Project Punga – Kmart Rūrākura (Retail & Logistics)
+- Waikeria Prison Development (Government)
+- Whangārei Civic Centre (Civic)
+- AALTO (High-rise Residential)
+
+## Team
+
+- **Mitch Buckley** — Director & Principal Fire Protection Designer. 20+ years industry experience. PS1 Author. Former network engineer who transitioned to fire protection in 2004, completing Level 3 & 4 apprenticeship. Ironman NZ finisher.
+- **Josef Thompson-Smith** — Senior Fire Protection Designer & BIM Manager. 7+ years experience. Expert in Revit, BIM360, Revizto.
+- **Laura Cullen** — Fire Protection Designer. Mechanical engineer (Beca, WSP background). Currently completing Diploma of Fire Engineering at Open Polytechnic NZ.
+
+## Contact
+
+- Phone: 0800 113 996
+- Email: info@sprinklerdesign.co.nz
+- Location: New Zealand — Auckland, Wellington, Christchurch, Hamilton & nationwide
+- Website: https://www.sprinklerdesign.co.nz
+
+## Key Pages
+
+- Homepage: https://www.sprinklerdesign.co.nz/
+- Services: https://www.sprinklerdesign.co.nz/services
+- Projects: https://www.sprinklerdesign.co.nz/projects
+- About: https://www.sprinklerdesign.co.nz/about
+- Careers: https://www.sprinklerdesign.co.nz/careers
+- Contact: https://www.sprinklerdesign.co.nz/contact-us
