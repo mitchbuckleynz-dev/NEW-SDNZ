@@ -26,7 +26,7 @@ export function MaintenancePage() {
           <div className="flex justify-center mb-10">
             <div className="relative">
               <div className="absolute inset-0 bg-[#4ade80] blur-[30px] opacity-20 rounded-full logo-ring"></div>
-              <div className="w-40 h-40 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] rounded-2xl flex items-center justify-center relative z-10 mx-auto p-4">
+              <div className="w-40 h-40 flex items-center justify-center relative z-10 mx-auto p-4">
                 <img src="/logo.png" alt="Sprinkler Design NZ" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" />
               </div>
             </div>
