@@ -1,5 +1,5 @@
 /**
- * Sprinkler Design NZ â€” New Website
+ * Sprinkler Design NZ - New Website
  * Merged from GitHub AI Studio base + sprinklerdesign.co.nz content
  * Enhanced with SEO schema, premium UI/UX, and full content from old site.
  */
@@ -106,14 +106,14 @@ const SERVICES = [
   },
 ];
 
-// PROJECTS now imported from src/data/projects.ts â€” edit that file to add/remove projects.
+// PROJECTS now imported from src/data/projects.ts - edit that file to add/remove projects.
 const PROJECTS = getPublishedProjects();
 
 const TEAM = [
   {
     name: 'Mitch Buckley',
     role: 'Director & Principal Fire Protection Designer',
-    bio: 'With an early background in IT as a network engineer, Mitch made a career change in 2004 and started as a sprinkler fitter, pursuing a Level 3 & 4 fixed fire protection apprenticeship. After years across all facets of the trade â€” project management, contracts management, estimating, design, and technical sales with a worldwide sprinkler manufacturer â€” Mitch founded Sprinkler Design NZ. Outside work, Mitch is an avid triathlete, completing Ironman NZ in Taupo.',
+    bio: 'With an early background in IT as a network engineer, Mitch made a career change in 2004 and started as a sprinkler fitter, pursuing a Level 3 & 4 fixed fire protection apprenticeship. After years across all facets of the trade, including project management, contracts management, estimating, design, and technical sales with a worldwide sprinkler manufacturer, Mitch founded Sprinkler Design NZ. Outside work, Mitch is an avid triathlete, completing Ironman NZ in Taupo.',
     image: '/team-mitch.png',
     initials: 'MB',
     color: 'from-green-400 to-emerald-600',
@@ -137,24 +137,24 @@ const TEAM = [
 ];
 
 const STATS = [
-  { value: '20+', label: 'Years Industry Experience' },
+  { value: '35+', label: 'Years Industry Experience' },
   { value: '500+', label: 'Projects Completed' },
   { value: '100%', label: 'NZ Code Compliance' },
-  { value: '8', label: 'Landmark Projects' },
+  { value: '22+', label: 'Landmark Projects' },
 ];
 
 const TESTIMONIALS = [
   {
     quote: 'Sprinkler Design NZ delivered exceptional BIM coordination on our hospital project. Their attention to detail and understanding of complex multi-discipline environments is second to none.',
     author: 'Senior Project Manager',
-    company: 'Major NZ Construction Contractor â€” Healthcare Sector',
+    company: 'Major NZ Construction Contractor - Healthcare Sector',
     initials: 'SP',
     color: 'from-green-400 to-emerald-600',
   },
   {
     quote: 'Their PS1 authoring and independent consulting gave us complete confidence through the consent process. Reliable, responsive, and genuinely expert.',
     author: 'Project Director',
-    company: 'Auckland Commercial Development â€” 2024',
+    company: 'Auckland Commercial Development - 2024',
     initials: 'PD',
     color: 'from-cyan-400 to-blue-600',
   },
@@ -174,15 +174,16 @@ const FAQS = [
   },
   {
     question: 'What is BIM coordination for fire protection?',
-    answer: 'BIM (Building Information Modelling) coordination involves creating a detailed 3D model of the fire protection system (sprinklers, pipes, hangers) within the wider building model using tools like Autodesk Revit. This allows clash detection with structural, mechanical, and architectural elements before construction begins â€” eliminating costly on-site redesigns.',
+    answer: 'BIM (Building Information Modelling) coordination involves creating a detailed 3D model of the fire protection system (sprinklers, pipes, hangers) within the wider building model using tools like Autodesk Revit. This allows clash detection with structural, mechanical, and architectural elements before construction begins, eliminating costly on-site redesigns.',
   },
   {
     question: 'Do you design residential fire sprinkler systems?',
-    answer: 'Yes. While we specialise in large commercial, industrial, and government projects, we also design residential fire sprinkler systems for apartments, townhouses, and high-rise residential buildings â€” all to NZS 4541 and relevant standards.',
+    answer: 'Yes. While we specialise in large commercial, industrial, and government projects, we also design residential fire sprinkler systems for apartments, townhouses, rural properties, and high-rise residential buildings — all to NZS 4541, NZS 4515, and NZS 4517. We run our residential sector under a separate brand. For more information on our residential services, visit resiguard.co.nz.',
+    answerNode: (<>Yes. While we specialise in large commercial, industrial, and government projects, we also design residential fire sprinkler systems for apartments, townhouses, rural properties, and high-rise residential buildings — all to NZS 4541, NZS 4515, and NZS 4517. We run our residential sector under a separate brand. For more information on our residential services, visit{' '}<a href="https://www.resiguard.co.nz" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 underline underline-offset-2 transition-colors">resiguard.co.nz</a>.</>),
   },
   {
     question: 'What areas of New Zealand do you service?',
-    answer: 'We provide fire protection design services nationwide across New Zealand, including Auckland, Wellington, Christchurch, Hamilton, Tauranga, Dunedin, and all regions. Our BIM workflow means we can work remotely on any project across New Zealand.',
+    answer: 'We provide fire protection design services nationwide across New Zealand and in the Pacific Islands. Our BIM workflow means we can work remotely on any project, wherever you are.',
   },
   {
     question: 'What is 3D point cloud scanning and when is it useful?',
@@ -376,9 +377,7 @@ const Hero = () => {
       <div className="absolute bottom-1/3 -right-60 w-[400px] h-[400px] bg-cyan-500/8 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/4 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Beam decoration */}
-      <div className="hero-beam top-1/3 left-0" style={{ animationDelay: '0s' }} aria-hidden="true" />
-      <div className="hero-beam top-2/3 left-0 opacity-50" style={{ animationDelay: '3.5s', width: '140px' }} aria-hidden="true" />
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-16">
         <div className="max-w-4xl">
@@ -389,7 +388,7 @@ const Hero = () => {
           >
             <div className="section-label mb-8">
               <Shield className="w-3 h-3" aria-hidden="true" />
-              Trusted Fire Protection Experts Â· New Zealand
+              Trusted Fire Protection Experts · New Zealand
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-white leading-[0.93] mb-8 tracking-tight">
@@ -399,7 +398,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl font-light">
-              Unleashing the power of BIM â€” we ignite excellence in fire protection across New Zealand with decades of industry expertise.
+              Unleashing the power of BIM. We ignite excellence in fire protection across New Zealand with decades of industry expertise.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -471,7 +470,7 @@ const Services = () => {
             <span className="text-gradient">Protection Solutions</span>
           </h2>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-            From initial concept to final construction documentation â€” leveraging the very best in BIM technology to deliver precise, compliant fire protection across New Zealand.
+            From initial concept to final construction documentation, leveraging the very best in BIM technology to deliver precise, compliant fire protection across New Zealand.
           </p>
         </div>
 
@@ -501,7 +500,7 @@ const Services = () => {
                   aria-hidden="true"
                 />
 
-                {/* Icon â€” uses per-service accent */}
+                {/* Icon - uses per-service accent */}
                 <div
                   className="w-14 h-14 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border"
                   style={{
@@ -597,8 +596,8 @@ const About = () => {
           >
             <div className="relative overflow-hidden shadow-2xl shadow-black/50" style={{ minHeight: '480px' }}>
               <img
-                src="/images/pump room.jfif"
-                alt="BIM fire protection model in Revit â€” Sprinkler Design NZ"
+                src="/images/nz_fire_pump_room_transition_render.png"
+                alt="BIM fire protection model in Revit - Sprinkler Design NZ"
                 className="w-full h-full object-cover"
 
               />
@@ -631,7 +630,7 @@ const About = () => {
                 'Cost-effective solutions tailored to your unique needs',
                 'Decades of deep industry knowledge across all facets',
                 'Advanced BIM coordination & clash detection using Revit',
-                'Independent consultancy â€” no conflicts of interest',
+                'Independent consultancy with no conflicts of interest',
                 'PS1 authorship and PS4 construction monitoring',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
@@ -701,7 +700,7 @@ const About = () => {
 };
 
 // ============================================================
-// PROJECTS â€” Split-layout carousel (image fan + info panel)
+// PROJECTS - Split-layout carousel (image fan + info panel)
 // ============================================================
 
 const ProjectsCarousel = ({ featured, navigate }: { featured: typeof PROJECTS; navigate: ReturnType<typeof useNavigate> }) => {
@@ -829,17 +828,17 @@ const ProjectsCarousel = ({ featured, navigate }: { featured: typeof PROJECTS; n
               {project.title}
             </h3>
 
-            {/* Location Â· Year */}
+            {/* Location · Year */}
             {'location' in project && 'year' in project && (
               <p className="text-slate-500 text-sm mb-5 flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-green-500" aria-hidden="true" />
                 {(project as any).location}
-                <span className="text-slate-700">Â·</span>
+                <span className="text-slate-700">·</span>
                 {(project as any).year}
               </p>
             )}
 
-            {/* Description â€” word-by-word blur entrance */}
+            {/* Description - word-by-word blur entrance */}
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               {project.description.split(' ').map((word, i) => (
                 <motion.span
@@ -976,7 +975,7 @@ const Careers = () => (
       <div className="grid md:grid-cols-3 gap-5 mb-12 text-left">
         {[
           { icon: Award, title: 'Industry Leaders', desc: 'Work on landmark NZ projects including hospitals, arenas, prisons, and civic centres.' },
-          { icon: Zap, title: 'Cutting-Edge Tech', desc: 'Use the latest BIM tools â€” Revit, BIM360, Revizto, and point cloud scanning.' },
+          { icon: Zap, title: 'Cutting-Edge Tech', desc: 'Use the latest BIM tools - Revit, BIM360, Revizto, and point cloud scanning.' },
           { icon: Users, title: 'Great Team Culture', desc: 'A tight-knit, experienced team that values learning, mentorship, and work-life balance.' },
         ].map((item) => (
           <div key={item.title} className="benefit-card p-6">
@@ -990,7 +989,7 @@ const Careers = () => (
       </div>
 
       <a
-        href="mailto:info@sprinklerdesign.co.nz?subject=Career Enquiry â€” Sprinkler Designer"
+        href="#contact"
         id="careers-apply-cta"
         className="btn-primary inline-flex items-center gap-2 px-10 py-5 font-bold text-lg cursor-pointer"
       >
@@ -1117,7 +1116,7 @@ const FAQ = () => {
                       className="overflow-hidden"
                     >
                       <p className="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/8 pt-4">
-                        {faq.answer}
+                        {'answerNode' in faq ? (faq as any).answerNode : faq.answer}
                       </p>
                     </motion.div>
                   )}
@@ -1135,12 +1134,32 @@ const FAQ = () => {
 // CONTACT
 // ============================================================
 const Contact = () => {
-  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '', submitted: false });
+  const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', phone: '', subject: '', message: '', submitted: false });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In production, wire to a form backend or Netlify Forms
-    setFormState((prev) => ({ ...prev, submitted: true }));
+    setIsSubmitting(true);
+    
+    try {
+      await fetch('https://services.leadconnectorhq.com/hooks/HDn9BDURdlJNCjkTdHsr/webhook-trigger/9ce1cff4-c3c7-4e80-a588-41e2eff5c39e', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+      // Trigger success state regardless of response (webhook endpoints often just return 200 without payload)
+      setFormState((prev) => ({ ...prev, submitted: true }));
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Still show success to user if webhook fails, or you could show an error.
+      // Usually better to show success so they don't repeatedly mash submit.
+      setFormState((prev) => ({ ...prev, submitted: true }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -1170,7 +1189,7 @@ const Contact = () => {
               {[
                 { icon: Phone, label: 'Call Us', value: '0800 113 996', href: 'tel:0800113996' },
                 { icon: Mail, label: 'Email Us', value: 'info@sprinklerdesign.co.nz', href: 'mailto:info@sprinklerdesign.co.nz' },
-                { icon: MapPin, label: 'Location', value: 'Auckland Â· Wellington Â· Christchurch Â· Nationwide', href: null },
+                { icon: MapPin, label: 'Location', value: 'Auckland · Wellington · Christchurch · Nationwide', href: null },
               ].map((item) => (
                 <div key={item.label} className="contact-icon-block flex items-start gap-5">
                   <div
@@ -1211,18 +1230,33 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6" noValidate aria-label="Contact form">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="contact-name" className="block text-sm font-semibold text-slate-300 mb-2">Full Name *</label>
+                    <label htmlFor="contact-first-name" className="block text-sm font-semibold text-slate-300 mb-2">First Name *</label>
                     <input
-                      id="contact-name"
+                      id="contact-first-name"
                       type="text"
                       required
-                      autoComplete="name"
+                      autoComplete="given-name"
                       className="input-dark w-full px-4 py-3 text-white"
-                      placeholder="John Smith"
-                      value={formState.name}
-                      onChange={(e) => setFormState((p) => ({ ...p, name: e.target.value }))}
+                      placeholder="John"
+                      value={formState.firstName}
+                      onChange={(e) => setFormState((p) => ({ ...p, firstName: e.target.value }))}
                     />
                   </div>
+                  <div>
+                    <label htmlFor="contact-last-name" className="block text-sm font-semibold text-slate-300 mb-2">Last Name *</label>
+                    <input
+                      id="contact-last-name"
+                      type="text"
+                      required
+                      autoComplete="family-name"
+                      className="input-dark w-full px-4 py-3 text-white"
+                      placeholder="Smith"
+                      value={formState.lastName}
+                      onChange={(e) => setFormState((p) => ({ ...p, lastName: e.target.value }))}
+                    />
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="contact-email" className="block text-sm font-semibold text-slate-300 mb-2">Email Address *</label>
                     <input
@@ -1234,6 +1268,19 @@ const Contact = () => {
                       placeholder="john@company.co.nz"
                       value={formState.email}
                       onChange={(e) => setFormState((p) => ({ ...p, email: e.target.value }))}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-phone" className="block text-sm font-semibold text-slate-300 mb-2">Phone Number *</label>
+                    <input
+                      id="contact-phone"
+                      type="tel"
+                      required
+                      autoComplete="tel"
+                      className="input-dark w-full px-4 py-3 text-white"
+                      placeholder="021 123 4567"
+                      value={formState.phone}
+                      onChange={(e) => setFormState((p) => ({ ...p, phone: e.target.value }))}
                     />
                   </div>
                 </div>
@@ -1255,7 +1302,7 @@ const Contact = () => {
                     required
                     rows={5}
                     className="input-dark w-full px-4 py-3 text-white resize-none"
-                    placeholder="Tell us about your project â€” type, location, stage, timeline..."
+                    placeholder="Tell us about your project - type, location, stage, timeline..."
                     value={formState.message}
                     onChange={(e) => setFormState((p) => ({ ...p, message: e.target.value }))}
                   />
@@ -1263,9 +1310,10 @@ const Contact = () => {
                 <button
                   type="submit"
                   id="contact-submit"
-                  className="btn-primary w-full py-4 text-lg font-bold cursor-pointer"
+                  disabled={isSubmitting}
+                  className="btn-primary w-full py-4 text-lg font-bold cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
                 <p className="text-slate-500 text-xs text-center">
                   We typically respond within 1 business day.
@@ -1348,7 +1396,7 @@ const Footer = () => (
             <a href="mailto:info@sprinklerdesign.co.nz" className="block text-slate-400 hover:text-green-400 transition-colors text-sm cursor-pointer">
               info@sprinklerdesign.co.nz
             </a>
-            <p className="text-slate-500 text-sm">New Zealand â€” Nationwide</p>
+            <p className="text-slate-500 text-sm">New Zealand - Nationwide</p>
           </div>
           <a
             href="#contact"
@@ -1363,7 +1411,7 @@ const Footer = () => (
       {/* Bottom bar */}
       <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="footer-legal-text text-sm">
-          Â© {new Date().getFullYear()} Sprinkler Design Ltd. All rights reserved.
+          © {new Date().getFullYear()} Sprinkler Design Ltd. All rights reserved.
         </p>
         <div className="flex gap-6 text-sm">
           <a href="https://www.sprinklerdesign.co.nz/privacy-policy" target="_blank" rel="noopener noreferrer" className="footer-legal-link cursor-pointer">

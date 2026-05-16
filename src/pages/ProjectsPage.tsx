@@ -105,11 +105,12 @@ export const ProjectsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.6 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12"
           >
             <StatCard icon={BarChart3} value="500+" label="Projects completed" />
-            <StatCard icon={Clock} value="20+" label="Years experience" />
+            <StatCard icon={Clock} value="35+" label="Years experience" />
             <StatCard icon={CheckCircle2} value="100%" label="NZ code compliance" />
+            <StatCard icon={Building2} value="22+" label="Landmark projects" />
           </motion.div>
         </div>
       </section>

@@ -7,9 +7,8 @@ import { DemoPage } from './pages/DemoPage.tsx';
 import { MaintenancePage } from './pages/MaintenancePage.tsx';
 import './index.css';
 
-// To disable maintenance mode locally, add VITE_LIVE=true to .env.local
-// or temporarly change this value.
-const isMaintenance = import.meta.env.VITE_LIVE !== 'true';
+// To enable maintenance mode, add VITE_MAINTENANCE=true to your environment variables
+const isMaintenance = import.meta.env.VITE_MAINTENANCE === 'true';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
