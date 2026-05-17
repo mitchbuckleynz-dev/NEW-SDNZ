@@ -1,6 +1,7 @@
 # Sprinkler Design NZ — robots.txt
 User-agent: *
 Allow: /
+Disallow: /sync
 
 # AI Crawlers — allow for GEO/AEO visibility
 User-agent: GPTBot
