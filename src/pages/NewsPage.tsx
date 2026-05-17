@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, Calendar, Tag, ArrowRight, Newspaper, Loader2 } from 'lucide-react';
 import { supabase, BlogPost } from '../lib/supabase';
@@ -158,6 +158,23 @@ export function NewsPage() {
           <ArrowLeft className="w-4 h-4" />
           Back to Home
         </motion.button>
+
+        {/* Admin: Sync trigger — hidden from visitors via noindex on /sync */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+          className="absolute top-8 right-4 sm:right-6 lg:right-8"
+        >
+          <Link
+            to="/sync"
+            className="flex items-center gap-1.5 text-xs text-slate-600 hover:text-green-400 transition-colors duration-200 font-medium"
+            title="Sync blog articles from Notion"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+            Sync from Notion
+          </Link>
+        </motion.div>
 
         {/* Header */}
         <motion.div
