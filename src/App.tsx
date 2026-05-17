@@ -39,6 +39,7 @@ const NAV_LINKS = [
   { name: 'Services', href: '#services' },
   { name: 'About', href: '#about' },
   { name: 'Projects', href: '#projects' },
+  { name: 'News', href: '/news', isPage: true },
   { name: 'Careers', href: '#careers' },
   { name: 'Contact', href: '#contact' },
 ];
@@ -273,7 +274,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-8" role="menubar">
             {NAV_LINKS.map((link) => {
               const id = link.href.replace('#', '');
-              const isActive = activeSection === id;
+              const isActive = !link.isPage && activeSection === id;
               return (
                 <a
                   key={link.name}
@@ -1337,9 +1338,11 @@ const Footer = () => (
         {/* Brand */}
         <div className="space-y-5">
           <a href="#home" className="flex items-center gap-3" aria-label="Sprinkler Design NZ - Back to top">
-            <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
-              <Flame className="text-white w-5 h-5" aria-hidden="true" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="Sprinkler Design NZ logo"
+              className="w-16 h-16 object-contain"
+            />
             <span className="text-xl font-bold text-white tracking-tight">
               Sprinkler<span className="text-green-400">Design</span>
               <span className="ml-1 text-xs font-normal uppercase tracking-widest text-slate-500">NZ</span>

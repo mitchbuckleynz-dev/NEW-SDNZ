@@ -5,6 +5,8 @@ import App from './App.tsx';
 import { ProjectsPage } from './pages/ProjectsPage.tsx';
 import { DemoPage } from './pages/DemoPage.tsx';
 import { MaintenancePage } from './pages/MaintenancePage.tsx';
+import { NewsPage } from './pages/NewsPage.tsx';
+import { NewsArticlePage } from './pages/NewsArticlePage.tsx';
 import './index.css';
 
 // To enable maintenance mode, add VITE_MAINTENANCE=true to your environment variables
@@ -23,12 +25,16 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/dev" element={<App />} />
           <Route path="/dev/projects" element={<ProjectsPage />} />
           <Route path="/dev/demo" element={<DemoPage />} />
+          <Route path="/dev/news" element={<NewsPage />} />
+          <Route path="/dev/news/:slug" element={<NewsArticlePage />} />
         </Routes>
       ) : (
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/demo" element={<DemoPage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/:slug" element={<NewsArticlePage />} />
         </Routes>
       )}
     </BrowserRouter>
