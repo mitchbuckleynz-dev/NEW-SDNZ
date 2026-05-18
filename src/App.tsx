@@ -6,7 +6,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getPublishedProjects } from './data/projects';
+import { supabase } from './lib/supabase';
 import { motion, AnimatePresence, useInView } from 'motion/react';
 import {
   Flame,
@@ -107,8 +107,20 @@ const SERVICES = [
   },
 ];
 
-// PROJECTS now imported from src/data/projects.ts - edit that file to add/remove projects.
-const PROJECTS = getPublishedProjects();
+// PROJECTS are now fetched live from Supabase (portfolio_projects table, ordered newest first).
+type PortfolioProject = {
+  slug: string;
+  title: string;
+  category: string | null;
+  description: string | null;
+  short_desc: string | null;
+  location: string | null;
+  year: string | null;
+  cover_image: string | null;
+  services: string[];
+  highlights_json: string | null;
+  created_at: string;
+};
 
 const TEAM = [
   {
@@ -704,7 +716,7 @@ const About = () => {
 // PROJECTS - Split-layout carousel (image fan + info panel)
 // ============================================================
 
-const ProjectsCarousel = ({ featured, navigate }: { featured: typeof PROJECTS; navigate: ReturnType<typeof useNavigate> }) => {
+const ProjectsCarousel = ({ featured, navigate }: { featured: PortfolioProject[]; navigate: ReturnType<typeof useNavigate> }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const [containerW, setContainerW] = useState(600);
@@ -795,12 +807,18 @@ const ProjectsCarousel = ({ featured, navigate }: { featured: typeof PROJECTS; n
                   : '0 20px 40px -8px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.04)',
               }}
             >
-              <img
-                src={p.image}
-                alt={p.title}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+              {p.cover_image ? (
+                <img
+                  src={p.cover_image}
+                  alt={p.title}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-slate-900">
+                  <Building2 className="w-16 h-16 text-slate-700" aria-hidden="true" />
+                </div>
+              )}
             </div>
           );
         })}
@@ -822,7 +840,7 @@ const ProjectsCarousel = ({ featured, navigate }: { featured: typeof PROJECTS; n
             className="flex-1"
           >
             {/* Category badge */}
-            <div className="project-category-badge mb-4 inline-block">{project.category}</div>
+            <div className="project-category-badge mb-4 inline-block">{project.category ?? 'Project'}</div>
 
             {/* Title */}
             <h3 className="text-white text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight mb-3">
@@ -830,18 +848,18 @@ const ProjectsCarousel = ({ featured, navigate }: { featured: typeof PROJECTS; n
             </h3>
 
             {/* Location · Year */}
-            {'location' in project && 'year' in project && (
+            {(project.location || project.year) && (
               <p className="text-slate-500 text-sm mb-5 flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-green-500" aria-hidden="true" />
-                {(project as any).location}
-                <span className="text-slate-700">·</span>
-                {(project as any).year}
+                {project.location}
+                {project.location && project.year && <span className="text-slate-700">·</span>}
+                {project.year}
               </p>
             )}
 
             {/* Description - word-by-word blur entrance */}
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              {project.description.split(' ').map((word, i) => (
+              {(project.short_desc || project.description || '').split(' ').map((word, i) => (
                 <motion.span
                   key={i}
                   initial={{ filter: 'blur(8px)', opacity: 0, y: 4 }}
@@ -854,17 +872,21 @@ const ProjectsCarousel = ({ featured, navigate }: { featured: typeof PROJECTS; n
               ))}
             </p>
 
-            {/* Highlights */}
-            {'highlights' in project && Array.isArray((project as any).highlights) && (project as any).highlights.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-6">
-                {(project as any).highlights.map((h: { label: string; value: string }, i: number) => (
-                  <div key={i} className="flex flex-col items-start bg-slate-900 border border-slate-800 px-3 py-2 rounded-lg">
-                    <span className="text-green-400 text-sm font-extrabold leading-none">{h.value}</span>
-                    <span className="text-slate-500 text-xs mt-0.5">{h.label}</span>
-                  </div>
-                ))}
-              </div>
-            )}
+            {/* Highlights - parsed from highlights_json */}
+            {(() => {
+              let highlights: { label: string; value: string }[] = [];
+              try { highlights = project.highlights_json ? JSON.parse(project.highlights_json) : []; } catch {}
+              return highlights.length > 0 ? (
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {highlights.map((h, i) => (
+                    <div key={i} className="flex flex-col items-start bg-slate-900 border border-slate-800 px-3 py-2 rounded-lg">
+                      <span className="text-green-400 text-sm font-extrabold leading-none">{h.value}</span>
+                      <span className="text-slate-500 text-xs mt-0.5">{h.label}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : null;
+            })()}
           </motion.div>
         </AnimatePresence>
 
@@ -898,8 +920,6 @@ const ProjectsCarousel = ({ featured, navigate }: { featured: typeof PROJECTS; n
               ))}
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
@@ -908,7 +928,20 @@ const ProjectsCarousel = ({ featured, navigate }: { featured: typeof PROJECTS; n
 
 const Projects = () => {
   const navigate = useNavigate();
-  const featured = PROJECTS.slice(0, 4);
+  const [featured, setFeatured] = useState<PortfolioProject[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    supabase
+      .from('portfolio_projects')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(4)
+      .then(({ data }) => {
+        setFeatured((data as PortfolioProject[]) || []);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <section id="projects" className="py-28 bg-slate-950 relative overflow-hidden" aria-labelledby="projects-heading">
@@ -942,8 +975,14 @@ const Projects = () => {
           </button>
         </div>
 
-        {/* â”€â”€ Split-layout carousel â”€â”€ */}
-        <ProjectsCarousel featured={featured} navigate={navigate} />
+        {/* ── Split-layout carousel ── */}
+        {loading ? (
+          <div className="h-[420px] flex items-center justify-center">
+            <div className="w-8 h-8 border-2 border-green-500/30 border-t-green-400 rounded-full animate-spin" />
+          </div>
+        ) : featured.length > 0 ? (
+          <ProjectsCarousel featured={featured} navigate={navigate} />
+        ) : null}
       </div>
     </section>
   );
