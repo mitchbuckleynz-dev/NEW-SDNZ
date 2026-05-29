@@ -1177,26 +1177,80 @@ const Contact = () => {
   const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', phone: '', subject: '', message: '', submitted: false });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  // Cloudflare Turnstile (bot challenge). The site key is public; the
+  // secret lives only in the /api/contact serverless function.
+  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<string | null>(null);
+  const tokenRef = useRef('');
+  const honeypotRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!turnstileSiteKey) return;
+    let cancelled = false;
+    const tryRender = () => {
+      if (cancelled || widgetIdRef.current || !turnstileRef.current || !window.turnstile) {
+        return;
+      }
+      widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: turnstileSiteKey,
+        theme: 'dark',
+        callback: (token) => { tokenRef.current = token; },
+        'expired-callback': () => { tokenRef.current = ''; },
+        'error-callback': () => { tokenRef.current = ''; },
+      });
+    };
+    // The script loads async — poll briefly until window.turnstile exists.
+    tryRender();
+    const interval = window.setInterval(tryRender, 300);
+    return () => { cancelled = true; window.clearInterval(interval); };
+  }, [turnstileSiteKey]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrorMsg('');
+
+    // Honeypot — if a bot filled the hidden field, pretend success.
+    if (honeypotRef.current?.value) {
+      setFormState((prev) => ({ ...prev, submitted: true }));
+      return;
+    }
+
+    if (turnstileSiteKey && !tokenRef.current) {
+      setErrorMsg('Please complete the verification check, then try again.');
+      return;
+    }
+
     setIsSubmitting(true);
-    
     try {
-      await fetch('https://services.leadconnectorhq.com/hooks/HDn9BDURdlJNCjkTdHsr/webhook-trigger/9ce1cff4-c3c7-4e80-a588-41e2eff5c39e', {
+      const { firstName, lastName, email, phone, subject, message } = formState;
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formState),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName, lastName, email, phone, subject, message,
+          turnstileToken: tokenRef.current,
+        }),
       });
-      // Trigger success state regardless of response (webhook endpoints often just return 200 without payload)
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error((data as { error?: string }).error || 'Submission failed');
+      }
       setFormState((prev) => ({ ...prev, submitted: true }));
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Still show success to user if webhook fails, or you could show an error.
-      // Usually better to show success so they don't repeatedly mash submit.
-      setFormState((prev) => ({ ...prev, submitted: true }));
+      setErrorMsg(
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong. Please email info@sprinklerdesign.co.nz.',
+      );
+      // Reset the challenge so the user can retry cleanly.
+      tokenRef.current = '';
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.reset(widgetIdRef.current);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -1347,6 +1401,24 @@ const Contact = () => {
                     onChange={(e) => setFormState((p) => ({ ...p, message: e.target.value }))}
                   />
                 </div>
+                {/* Honeypot — hidden from users; bots tend to fill it. */}
+                <input
+                  ref={honeypotRef}
+                  type="text"
+                  name="company_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                  style={{ position: 'absolute', left: '-9999px' }}
+                />
+                {/* Cloudflare Turnstile widget */}
+                <div ref={turnstileRef} className="flex justify-center" />
+                {errorMsg && (
+                  <p className="text-red-400 text-sm text-center" role="alert">
+                    {errorMsg}
+                  </p>
+                )}
                 <button
                   type="submit"
                   id="contact-submit"
