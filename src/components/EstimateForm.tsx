@@ -389,10 +389,6 @@ function Confirmation({
           </>
         )}
       </p>
-      <p className="mt-6 text-sm text-slate-500 mb-0">
-        Prefer to talk now? Call us on{' '}
-        <a href="tel:0800113996" className="font-medium text-[#4caf22]">0800 113 996</a>.
-      </p>
     </div>
   );
 }
