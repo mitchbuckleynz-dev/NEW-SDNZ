@@ -58,6 +58,8 @@ export function EstimateForm() {
   const [sections, setSections] = useState<SectionState[]>([emptySection()]);
 
   // Step 2 — details
+  const [projectName, setProjectName] = useState('');
+  const [projectLocation, setProjectLocation] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -105,9 +107,12 @@ export function EstimateForm() {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+    if (!projectName.trim())
+      return setError('Please enter a project name or reference.');
+    if (!name.trim()) return setError('Please enter your name.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
       return setError('Please enter a valid email address.');
-    if (!name.trim()) return setError('Please enter your name.');
+    if (!phone.trim()) return setError('Please enter your phone number.');
 
     setSubmitting(true);
     try {
@@ -121,6 +126,8 @@ export function EstimateForm() {
             areaM2: Number(s.area),
             storeys: Number(s.storeys) || 1,
           })),
+          projectName: projectName.trim(),
+          projectLocation: projectLocation.trim(),
           name: name.trim(),
           email: email.trim(),
           phone: phone.trim(),
@@ -282,7 +289,32 @@ export function EstimateForm() {
 
       {step === 'details' && (
         <form className="space-y-5" onSubmit={submit}>
-          <p className="text-sm text-slate-600 m-0">Where should we send your estimate?</p>
+          <p className="text-sm text-slate-600 m-0">A little about your project, and where to send the estimate.</p>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div>
+              <label className="field-label" htmlFor="est-project-name">Project name / reference</label>
+              <input
+                id="est-project-name"
+                className="input-field"
+                placeholder="e.g. 12 High St warehouse"
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="field-label" htmlFor="est-project-location">
+                Project location / region <span className="optional">(optional)</span>
+              </label>
+              <input
+                id="est-project-location"
+                className="input-field"
+                placeholder="e.g. Tauranga"
+                value={projectLocation}
+                onChange={(e) => setProjectLocation(e.target.value)}
+              />
+            </div>
+          </div>
 
           <div>
             <label className="field-label" htmlFor="est-name">Name</label>
@@ -308,9 +340,7 @@ export function EstimateForm() {
               />
             </div>
             <div>
-              <label className="field-label" htmlFor="est-phone">
-                Phone <span className="optional">(optional)</span>
-              </label>
+              <label className="field-label" htmlFor="est-phone">Phone</label>
               <input
                 id="est-phone"
                 className="input-field"

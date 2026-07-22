@@ -79,6 +79,8 @@ export default async function handler(req: Request): Promise<Response> {
   const payload = {
     disciplines: Array.isArray(body.disciplines) ? body.disciplines : [],
     sections: Array.isArray(body.sections) ? body.sections : [],
+    projectName: str(body.projectName),
+    projectLocation: str(body.projectLocation),
     name: str(body.name),
     email: str(body.email),
     phone: str(body.phone),
