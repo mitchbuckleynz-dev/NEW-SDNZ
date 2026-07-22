@@ -195,7 +195,7 @@ export function EstimateForm() {
                     <button
                       type="button"
                       onClick={() => removeSection(i)}
-                      className="text-xs font-medium text-slate-400 hover:text-[#e5433a] bg-transparent border-none cursor-pointer transition-colors duration-150"
+                      className="text-xs font-medium text-slate-500 hover:text-[#e5433a] bg-transparent border-none cursor-pointer transition-colors duration-150"
                     >
                       Remove
                     </button>
@@ -237,7 +237,7 @@ export function EstimateForm() {
                           value={s.area}
                           onChange={(e) => updateSection(i, { area: e.target.value })}
                         />
-                        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-400">
+                        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-500">
                           m²
                         </span>
                       </div>
@@ -267,7 +267,7 @@ export function EstimateForm() {
                 className="flex w-full items-center justify-center gap-1.5 rounded-lg border border-dashed border-slate-300 bg-transparent py-2.5 text-sm font-medium text-slate-600 cursor-pointer transition-colors duration-150 hover:border-[#73d63b] hover:text-slate-900"
               >
                 <span className="text-lg leading-none">+</span> Add another section
-                <span className="text-xs text-slate-400">(e.g. office + warehouse)</span>
+                <span className="text-xs text-slate-500">(e.g. office + warehouse)</span>
               </button>
             )}
           </div>
@@ -348,7 +348,7 @@ export function EstimateForm() {
               {submitting ? 'Sending…' : 'Email me my estimate'}
             </button>
           </div>
-          <p className="text-center text-xs text-slate-400 m-0">
+          <p className="text-center text-xs text-slate-500 m-0">
             We'll only use your details to send this estimate and follow up.
           </p>
         </form>
@@ -400,7 +400,7 @@ function StepBars({ step }: { step: Step }) {
       {[0, 1].map((i) => (
         <span key={i} className={`step-bar ${i <= idx ? 'active' : ''}`} />
       ))}
-      <span className="ml-2 text-xs font-medium text-slate-400 whitespace-nowrap">
+      <span className="ml-2 text-xs font-medium text-slate-500 whitespace-nowrap">
         Step {idx + 1} of 2
       </span>
     </div>

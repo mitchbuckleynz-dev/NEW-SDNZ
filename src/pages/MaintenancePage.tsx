@@ -23,7 +23,7 @@ export function MaintenancePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl mx-auto mb-8 w-full">
             <div className="flex items-center gap-4 p-4 rounded-lg border border-slate-200 text-left w-full">
               <div className="w-11 h-11 rounded-lg tint-green flex items-center justify-center shrink-0">
-                <Clock className="w-5 h-5 text-[#4caf22]" />
+                <Clock className="w-5 h-5 text-[#3e7d1c]" />
               </div>
               <div>
                 <p className="text-sm text-slate-500 mb-0.5 m-0">Status</p>
@@ -33,7 +33,7 @@ export function MaintenancePage() {
 
             <a href="mailto:info@sprinklerdesign.co.nz" className="flex items-center gap-4 p-4 rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors duration-150 text-left w-full cursor-pointer">
               <div className="w-11 h-11 rounded-lg tint-green flex items-center justify-center shrink-0">
-                <Mail className="w-5 h-5 text-[#4caf22]" />
+                <Mail className="w-5 h-5 text-[#3e7d1c]" />
               </div>
               <div>
                 <p className="text-sm text-slate-500 mb-0.5 m-0">Need help now?</p>
@@ -50,7 +50,7 @@ export function MaintenancePage() {
         </div>
       </div>
 
-      <footer className="py-6 text-center text-slate-400 text-sm border-t border-slate-200 bg-white">
+      <footer className="py-6 text-center text-slate-500 text-sm border-t border-slate-200 bg-white">
         &copy; {new Date().getFullYear()} Sprinkler Design NZ. All rights reserved.
       </footer>
     </div>

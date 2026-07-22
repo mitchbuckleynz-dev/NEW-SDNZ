@@ -100,7 +100,7 @@ const ServicesOverview = () => (
         {DISCIPLINES.map((d) => (
           <article key={d.key} className="card p-6 transition-colors duration-150 hover:border-slate-300">
             <div className="w-11 h-11 flex items-center justify-center mb-5 rounded-lg tint-green">
-              <d.icon className="w-5 h-5 text-[#4caf22]" aria-hidden="true" />
+              <d.icon className="w-5 h-5 text-[#3e7d1c]" aria-hidden="true" />
             </div>
             <h3 className="text-lg font-semibold text-slate-900 mb-2 leading-snug">{d.title}</h3>
             <p className="text-slate-600 text-sm leading-relaxed m-0">{d.desc}</p>
@@ -111,7 +111,7 @@ const ServicesOverview = () => (
       <div className="text-center mt-10">
         <Link
           to="/services"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4caf22] transition-opacity duration-150 hover:opacity-80"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-[#3e7d1c] transition-opacity duration-150 hover:opacity-80"
         >
           Explore all services — consulting, BIM coordination, scanning &amp; more
           <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -132,6 +132,8 @@ const WhyUs = () => (
           <img
             src="/images/nz_fire_pump_room_transition_render.png"
             alt="BIM fire protection model in Revit - Sprinkler Design NZ"
+            width={640}
+            height={640}
             className="w-full rounded-2xl border border-slate-200 shadow-sm object-cover"
             style={{ minHeight: '360px', maxHeight: '480px' }}
           />
@@ -159,7 +161,7 @@ const WhyUs = () => (
               'PS1 authorship and PS4 construction monitoring',
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
-                <CheckCircle2 className="text-[#4caf22] w-5 h-5 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <CheckCircle2 className="text-[#3e7d1c] w-5 h-5 flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <span className="text-slate-700 text-sm">{item}</span>
               </div>
             ))}
@@ -199,7 +201,7 @@ const Sectors = () => (
 
       <Link
         to="/projects"
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4caf22] transition-opacity duration-150 hover:opacity-80"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-[#3e7d1c] transition-opacity duration-150 hover:opacity-80"
       >
         See our project portfolio
         <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -226,7 +228,7 @@ const Testimonials = () => (
           <blockquote key={item.author} className="card p-6 md:p-8 flex flex-col gap-5 m-0">
             <p className="text-slate-600 text-[15px] leading-relaxed flex-1 m-0">“{item.quote}”</p>
             <footer className="flex items-center gap-3.5 border-t border-slate-200 pt-5">
-              <div className="w-10 h-10 rounded-full tint-green flex items-center justify-center text-[#4caf22] font-semibold text-sm flex-shrink-0">
+              <div className="w-10 h-10 rounded-full tint-green flex items-center justify-center text-[#3e7d1c] font-semibold text-sm flex-shrink-0">
                 {item.initials}
               </div>
               <div>
@@ -253,7 +255,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
       <Navbar />
-      <main>
+      <main id="main">
         <Hero />
         <ServicesOverview />
         <WhyUs />

@@ -47,7 +47,8 @@ const CategoryPill = ({
 }) => (
   <button
     onClick={onClick}
-    className={`px-4 py-1.5 text-sm font-medium rounded-full border cursor-pointer whitespace-nowrap transition-colors duration-150 ${
+    aria-pressed={active}
+    className={`px-4 py-2.5 text-sm font-medium rounded-full border cursor-pointer whitespace-nowrap transition-colors duration-150 ${
       active
         ? 'border-[#73d63b] tint-green text-slate-900'
         : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50'
@@ -60,7 +61,7 @@ const CategoryPill = ({
 const StatCard = ({ icon: Icon, value, label }: { icon: React.ElementType; value: string; label: string }) => (
   <div className="card p-5 flex items-center gap-4">
     <div className="w-10 h-10 flex items-center justify-center rounded-lg tint-green flex-shrink-0">
-      <Icon className="w-4 h-4 text-[#4caf22]" />
+      <Icon className="w-4 h-4 text-[#3e7d1c]" />
     </div>
     <div>
       <p className="text-2xl font-semibold text-slate-900 leading-none tabular-nums m-0">{value}</p>
@@ -171,7 +172,7 @@ export const ProjectsPage = () => {
               {/* Admin sync link — noindex on /projects-sync keeps this internal */}
               <Link
                 to="/projects-sync"
-                className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-[#4caf22] transition-colors duration-150 font-medium whitespace-nowrap"
+                className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#3e7d1c] transition-colors duration-150 font-medium whitespace-nowrap"
                 title="Sync projects from Notion"
               >
                 <RefreshCw className="w-3 h-3" aria-hidden="true" />
@@ -187,7 +188,7 @@ export const ProjectsPage = () => {
 
       {/* ── Project Grid ── */}
       {!loading && (
-        <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pb-24">
+        <main id="main" className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pb-24">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((project) => {
               const highlights = parseHighlights(project.highlights_json);
@@ -233,7 +234,7 @@ export const ProjectsPage = () => {
                     {/* Location */}
                     {project.location && (
                       <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-3 font-medium">
-                        <MapPin className="w-3 h-3 text-[#4caf22]" />
+                        <MapPin className="w-3 h-3 text-[#3e7d1c]" />
                         {project.location}
                         {project.year && (
                           <>
@@ -297,7 +298,7 @@ export const ProjectsPage = () => {
                   </p>
                   <Link
                     to="/projects-sync"
-                    className="mt-6 inline-flex items-center gap-2 text-[#4caf22] text-sm font-medium hover:opacity-80 transition-opacity"
+                    className="mt-6 inline-flex items-center gap-2 text-[#3e7d1c] text-sm font-medium hover:opacity-80 transition-opacity"
                   >
                     <RefreshCw className="w-4 h-4" />
                     Sync projects now →
@@ -308,7 +309,7 @@ export const ProjectsPage = () => {
                   <p className="text-lg font-semibold text-slate-700">No projects in this category yet.</p>
                   <button
                     onClick={() => setActiveCategory('All')}
-                    className="mt-4 text-[#4caf22] text-sm font-medium hover:opacity-80 cursor-pointer bg-transparent border-none transition-opacity"
+                    className="mt-4 text-[#3e7d1c] text-sm font-medium hover:opacity-80 cursor-pointer bg-transparent border-none transition-opacity"
                   >
                     View all projects →
                   </button>

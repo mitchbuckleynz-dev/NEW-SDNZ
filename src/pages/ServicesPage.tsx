@@ -20,7 +20,7 @@ export function ServicesPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
       <Navbar />
-      <main>
+      <main id="main">
         {/* ── Header ── */}
         <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50 border-b border-slate-200">
           <div className="max-w-3xl mx-auto px-5 text-center">
@@ -47,7 +47,7 @@ export function ServicesPage() {
               {DISCIPLINES.map((d) => (
                 <article key={d.key} className="card p-6 md:p-8 transition-colors duration-150 hover:border-slate-300">
                   <div className="w-11 h-11 flex items-center justify-center mb-5 rounded-lg tint-green">
-                    <d.icon className="w-5 h-5 text-[#4caf22]" aria-hidden="true" />
+                    <d.icon className="w-5 h-5 text-[#3e7d1c]" aria-hidden="true" />
                   </div>
                   <h3 className="text-lg font-semibold text-slate-900 mb-2 leading-snug">{d.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed m-0">{d.desc}</p>
@@ -117,7 +117,7 @@ export function ServicesPage() {
                     onKeyDown={(e) => e.key === 'Enter' && setExpanded(isOpen ? null : service.title)}
                   >
                     <div className="w-11 h-11 flex items-center justify-center mb-5 rounded-lg tint-green">
-                      <service.icon className="w-5 h-5 text-[#4caf22]" aria-hidden="true" />
+                      <service.icon className="w-5 h-5 text-[#3e7d1c]" aria-hidden="true" />
                     </div>
 
                     <h3 className="text-lg font-semibold text-slate-900 mb-2 leading-snug">{service.title}</h3>
@@ -147,7 +147,7 @@ export function ServicesPage() {
                     </div>
 
                     <button
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4caf22] bg-transparent border-none p-0 cursor-pointer transition-opacity duration-150 hover:opacity-80"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-[#3e7d1c] bg-transparent border-none p-0 cursor-pointer transition-opacity duration-150 hover:opacity-80"
                       aria-label={`${isOpen ? 'Show less' : 'Learn more'} about ${service.title}`}
                     >
                       {isOpen ? 'Show Less' : 'Learn More'}

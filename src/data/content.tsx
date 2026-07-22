@@ -173,7 +173,7 @@ export const FAQS = [
   {
     question: 'Do you design residential fire sprinkler systems?',
     answer: 'Yes. While we specialise in large commercial, industrial, and government projects, we also design residential fire sprinkler systems for apartments, townhouses, rural properties, and high-rise residential buildings — all to NZS 4541, NZS 4515, and NZS 4517. We run our residential sector under a separate brand. For more information on our residential services, visit resiguard.co.nz.',
-    answerNode: (<>Yes. While we specialise in large commercial, industrial, and government projects, we also design residential fire sprinkler systems for apartments, townhouses, rural properties, and high-rise residential buildings — all to NZS 4541, NZS 4515, and NZS 4517. We run our residential sector under a separate brand. For more information on our residential services, visit{' '}<a href="https://www.resiguard.co.nz" target="_blank" rel="noopener noreferrer" className="text-[#4caf22] underline underline-offset-2 transition-colors hover:opacity-80">resiguard.co.nz</a>.</>),
+    answerNode: (<>Yes. While we specialise in large commercial, industrial, and government projects, we also design residential fire sprinkler systems for apartments, townhouses, rural properties, and high-rise residential buildings — all to NZS 4541, NZS 4515, and NZS 4517. We run our residential sector under a separate brand. For more information on our residential services, visit{' '}<a href="https://www.resiguard.co.nz" target="_blank" rel="noopener noreferrer" className="text-[#3e7d1c] underline underline-offset-2 transition-colors hover:opacity-80">resiguard.co.nz</a>.</>),
   },
   {
     question: 'What areas of New Zealand do you service?',

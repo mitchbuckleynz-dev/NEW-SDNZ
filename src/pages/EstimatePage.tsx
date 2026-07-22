@@ -27,7 +27,7 @@ export function EstimatePage() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
       <Navbar />
-      <main>
+      <main id="main">
         {/* ── Header ── */}
         <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
           <div className="max-w-2xl mx-auto px-5 text-center">
@@ -51,13 +51,13 @@ export function EstimatePage() {
             {/* Fallback / reassurance */}
             <p className="text-center text-slate-500 text-sm mt-6">
               Prefer to talk it through? Call{' '}
-              <a href="tel:0800113996" className="text-[#4caf22] font-medium">0800 113 996</a>
+              <a href="tel:0800113996" className="text-[#3e7d1c] font-medium">0800 113 996</a>
               {' '}or{' '}
-              <Link to="/contact" className="text-[#4caf22] font-medium">send us a message</Link>.
+              <Link to="/contact" className="text-[#3e7d1c] font-medium">send us a message</Link>.
             </p>
 
             {/* Disclaimer */}
-            <p className="text-[11px] leading-relaxed text-slate-400 border-t border-slate-200 pt-5 mt-8">
+            <p className="text-[11px] leading-relaxed text-slate-500 border-t border-slate-200 pt-5 mt-8">
               {DISCLAIMER_TEXT}
             </p>
           </div>

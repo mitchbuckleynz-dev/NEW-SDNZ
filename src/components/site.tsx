@@ -58,6 +58,13 @@ export const Navbar = () => {
       className={`sticky top-0 w-full z-50 bg-white/90 backdrop-blur-md transition-colors duration-150 ${isScrolled ? 'border-b border-slate-200 shadow-sm' : 'border-b border-slate-100'}`}
       aria-label="Main navigation"
     >
+      {/* Skip link — visible only when focused via keyboard */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:bg-white focus:border focus:border-slate-300 focus:rounded-lg focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-slate-900"
+      >
+        Skip to main content
+      </a>
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -68,23 +75,22 @@ export const Navbar = () => {
               className="w-10 h-10 object-contain"
             />
             <span className="text-lg font-semibold tracking-tight text-slate-900">
-              Sprinkler<span className="text-[#4caf22]">Design</span>
-              <span className="ml-1 text-[11px] font-normal uppercase tracking-widest text-slate-400">NZ</span>
+              Sprinkler<span className="text-[#3e7d1c]">Design</span>
+              <span className="ml-1 text-[11px] font-normal uppercase tracking-widest text-slate-500">NZ</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-7" role="menubar">
+          <div className="hidden md:flex items-center gap-7">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   to={link.href}
-                  role="menuitem"
                   aria-current={isActive ? 'page' : undefined}
                   className={`text-sm font-medium transition-colors duration-150 cursor-pointer ${
-                    isActive ? 'text-[#4caf22]' : 'text-slate-600 hover:text-slate-900'
+                    isActive ? 'text-[#3e7d1c]' : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   {link.name}
@@ -99,7 +105,7 @@ export const Navbar = () => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-slate-700 p-2 cursor-pointer transition-colors hover:text-slate-900 bg-transparent border-none"
+            className="md:hidden text-slate-700 p-2.5 -mr-1 cursor-pointer transition-colors hover:text-slate-900 bg-transparent border-none"
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
           >
@@ -117,14 +123,12 @@ export const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.15 }}
             className="md:hidden bg-white border-t border-slate-200 overflow-hidden"
-            role="menu"
           >
             <div className="px-5 pt-3 pb-6 space-y-1">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
-                  role="menuitem"
                   className="block px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
                 >
                   {link.name}
@@ -159,26 +163,27 @@ export const Footer = () => (
               className="w-10 h-10 object-contain"
             />
             <span className="text-lg font-semibold text-slate-900 tracking-tight">
-              Sprinkler<span className="text-[#4caf22]">Design</span>
-              <span className="ml-1 text-[11px] font-normal uppercase tracking-widest text-slate-400">NZ</span>
+              Sprinkler<span className="text-[#3e7d1c]">Design</span>
+              <span className="ml-1 text-[11px] font-normal uppercase tracking-widest text-slate-500">NZ</span>
             </span>
           </Link>
           <p className="text-slate-500 text-sm leading-relaxed">
             Leading the way in BIM-driven fire protection design and consulting across New Zealand. Decades of expertise at your service.
           </p>
-          <div className="flex gap-3">
-            <a href="tel:0800113996" className="text-slate-400 hover:text-[#4caf22] transition-colors cursor-pointer" aria-label="Call us">
-              <Phone className="w-4 h-4" aria-hidden="true" />
+          <div className="flex gap-1">
+            {/* p-3 + w-5 icon ≈ 44px touch target */}
+            <a href="tel:0800113996" className="p-3 -ml-3 text-slate-500 hover:text-[#3e7d1c] transition-colors cursor-pointer" aria-label="Call us">
+              <Phone className="w-5 h-5" aria-hidden="true" />
             </a>
-            <a href="mailto:info@sprinklerdesign.co.nz" className="text-slate-400 hover:text-[#4caf22] transition-colors cursor-pointer" aria-label="Email us">
-              <Mail className="w-4 h-4" aria-hidden="true" />
+            <a href="mailto:info@sprinklerdesign.co.nz" className="p-3 text-slate-500 hover:text-[#3e7d1c] transition-colors cursor-pointer" aria-label="Email us">
+              <Mail className="w-5 h-5" aria-hidden="true" />
             </a>
           </div>
         </div>
 
         {/* Quick Links */}
         <nav aria-label="Footer quick links">
-          <h3 className="eyebrow !text-slate-400 mb-5">Quick Links</h3>
+          <h3 className="eyebrow !text-slate-500 mb-5">Quick Links</h3>
           <ul className="space-y-2.5 list-none p-0 m-0">
             {[...NAV_LINKS, { name: 'Get an Estimate', href: '/estimate' }].map((link) => (
               <li key={link.name}>
@@ -192,7 +197,7 @@ export const Footer = () => (
 
         {/* Services */}
         <nav aria-label="Footer services links">
-          <h3 className="eyebrow !text-slate-400 mb-5">Services</h3>
+          <h3 className="eyebrow !text-slate-500 mb-5">Services</h3>
           <ul className="space-y-2.5 list-none p-0 m-0">
             {['Fire Sprinklers', 'Fire Alarms & Detection', 'Hydrants', 'Hose Reels & Extinguishers', 'BIM Design & Coordination', '3D Point Cloud Scanning'].map((s) => (
               <li key={s}>
@@ -206,7 +211,7 @@ export const Footer = () => (
 
         {/* Contact + CTA */}
         <div>
-          <h3 className="eyebrow !text-slate-400 mb-5">Contact</h3>
+          <h3 className="eyebrow !text-slate-500 mb-5">Contact</h3>
           <div className="space-y-2.5 mb-6">
             <a href="tel:0800113996" className="block text-slate-600 hover:text-slate-900 transition-colors text-sm cursor-pointer">
               0800 113 996
@@ -224,14 +229,14 @@ export const Footer = () => (
 
       {/* Bottom bar */}
       <div className="border-t border-slate-200 pt-7 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-slate-400 text-sm m-0">
+        <p className="text-slate-500 text-sm m-0">
           © {new Date().getFullYear()} Sprinkler Design Ltd. All rights reserved.
         </p>
         <div className="flex gap-6 text-sm">
-          <a href="https://www.sprinklerdesign.co.nz/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer">
+          <a href="https://www.sprinklerdesign.co.nz/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-700 transition-colors cursor-pointer">
             Privacy Policy
           </a>
-          <a href="https://www.sprinklerdesign.co.nz/terms-of-use" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer">
+          <a href="https://www.sprinklerdesign.co.nz/terms-of-use" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-700 transition-colors cursor-pointer">
             Terms of Use
           </a>
         </div>

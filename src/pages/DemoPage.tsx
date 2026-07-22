@@ -26,10 +26,10 @@ export function DemoPage() {
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link to="/" className="text-[#4caf22] hover:opacity-80 font-medium text-sm tracking-wide transition-opacity">
+          <Link to="/" className="text-[#3e7d1c] hover:opacity-80 font-medium text-sm tracking-wide transition-opacity">
             ← BACK TO MAIN SITE
           </Link>
-          <span className="eyebrow !text-slate-400">
+          <span className="eyebrow !text-slate-500">
             Interactive Concept Demo
           </span>
         </div>
@@ -46,7 +46,7 @@ export function DemoPage() {
             This is a functional prototype. As you seamlessly scroll down, the generic static graphic splits apart into its constituent 3D BIM layers—perfect for visually explaining clash detection without long text.
           </p>
 
-          <div className="mt-16 text-slate-400 flex flex-col items-center gap-2">
+          <div className="mt-16 text-slate-500 flex flex-col items-center gap-2">
             <span className="text-[11px] uppercase tracking-[0.16em] font-semibold">Scroll Down</span>
             <div className="w-[1px] h-12 bg-gradient-to-b from-slate-300 to-transparent"></div>
           </div>
@@ -90,9 +90,9 @@ export function DemoPage() {
                   <svg className="absolute inset-4 overflow-visible opacity-80" viewBox="0 0 100 100">
                     <path d="M 20 20 L 80 20 L 80 80" fill="none" stroke="#73d63b" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M 50 20 L 50 80" fill="none" stroke="#73d63b" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-                    <circle cx="50" cy="50" r="5" fill="#4caf22" />
-                    <circle cx="80" cy="50" r="5" fill="#4caf22" />
-                    <circle cx="20" cy="20" r="5" fill="#4caf22" />
+                    <circle cx="50" cy="50" r="5" fill="#3e7d1c" />
+                    <circle cx="80" cy="50" r="5" fill="#3e7d1c" />
+                    <circle cx="20" cy="20" r="5" fill="#3e7d1c" />
                   </svg>
 
                   {/* Counter-rotate text */}
@@ -100,7 +100,7 @@ export function DemoPage() {
                      <span className="bg-[#73d63b] text-slate-900 px-4 py-2 rounded-lg text-sm font-semibold shadow-sm whitespace-nowrap translate-x-4 -translate-y-8">
                        ✓ 0 Clashes Detected
                      </span>
-                     <span className="bg-white text-[#4caf22] px-3 py-1 rounded-full text-xs font-semibold border border-[#73d63b] whitespace-nowrap shadow-sm">Fire Protection (MEP)</span>
+                     <span className="bg-white text-[#3e7d1c] px-3 py-1 rounded-full text-xs font-semibold border border-[#73d63b] whitespace-nowrap shadow-sm">Fire Protection (MEP)</span>
                   </div>
                 </motion.div>
 

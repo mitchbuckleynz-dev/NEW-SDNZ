@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { MotionConfig } from 'motion/react';
 import App from './App.tsx';
 import { ServicesPage } from './pages/ServicesPage.tsx';
 import { ProjectsPage } from './pages/ProjectsPage.tsx';
@@ -17,6 +18,8 @@ const isMaintenance = import.meta.env.VITE_MAINTENANCE === 'true';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    {/* Respect the OS "reduce motion" setting for all motion/react animations */}
+    <MotionConfig reducedMotion="user">
     <BrowserRouter>
       {isMaintenance ? (
         <Routes>
@@ -49,5 +52,6 @@ createRoot(document.getElementById('root')!).render(
         </Routes>
       )}
     </BrowserRouter>
+    </MotionConfig>
   </StrictMode>,
 );

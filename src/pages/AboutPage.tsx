@@ -20,7 +20,7 @@ export function AboutPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
       <Navbar />
-      <main>
+      <main id="main">
         {/* ── Header / approach ── */}
         <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50 border-b border-slate-200">
           <div className="max-w-3xl mx-auto px-5 text-center">
@@ -70,7 +70,7 @@ export function AboutPage() {
                     'PS1 authorship and PS4 construction monitoring',
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
-                      <CheckCircle2 className="text-[#4caf22] w-5 h-5 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                      <CheckCircle2 className="text-[#3e7d1c] w-5 h-5 flex-shrink-0 mt-0.5" aria-hidden="true" />
                       <span className="text-slate-700 text-sm">{item}</span>
                     </div>
                   ))}
@@ -94,7 +94,7 @@ export function AboutPage() {
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="text-lg font-semibold text-slate-900 mb-0.5">{member.name}</h3>
-                  <p className="text-[#4caf22] text-sm font-medium mb-4">{member.role}</p>
+                  <p className="text-[#3e7d1c] text-sm font-medium mb-4">{member.role}</p>
                   <p className="text-slate-600 text-sm leading-relaxed m-0">{member.bio}</p>
                 </article>
               ))}
@@ -128,7 +128,7 @@ export function AboutPage() {
               {STANDARDS.map((s) => (
                 <div key={s.code} className="card p-5 flex items-start gap-4">
                   <div className="w-10 h-10 flex items-center justify-center rounded-lg tint-green flex-shrink-0">
-                    <CheckCircle2 className="w-4 h-4 text-[#4caf22]" aria-hidden="true" />
+                    <CheckCircle2 className="w-4 h-4 text-[#3e7d1c]" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-slate-900 font-semibold text-sm m-0">{s.code}</p>
@@ -180,7 +180,7 @@ export function AboutPage() {
                     >
                       <span className="font-medium text-sm text-slate-900">{faq.question}</span>
                       <ChevronDown
-                        className={`w-5 h-5 text-[#4caf22] flex-shrink-0 transition-transform duration-150 ${isOpen ? 'rotate-180' : ''}`}
+                        className={`w-5 h-5 text-[#3e7d1c] flex-shrink-0 transition-transform duration-150 ${isOpen ? 'rotate-180' : ''}`}
                         aria-hidden="true"
                       />
                     </button>
@@ -226,7 +226,7 @@ export function AboutPage() {
               ].map((item) => (
                 <div key={item.title} className="card p-6">
                   <div className="w-11 h-11 flex items-center justify-center mb-4 rounded-lg tint-green">
-                    <item.icon className="w-5 h-5 text-[#4caf22]" aria-hidden="true" />
+                    <item.icon className="w-5 h-5 text-[#3e7d1c]" aria-hidden="true" />
                   </div>
                   <h3 className="text-slate-900 font-semibold mb-2">{item.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed m-0">{item.desc}</p>

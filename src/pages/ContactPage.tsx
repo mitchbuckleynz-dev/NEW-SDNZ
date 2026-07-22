@@ -97,7 +97,7 @@ export function ContactPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
       <Navbar />
-      <main>
+      <main id="main">
         <section className="py-16 md:py-20 bg-white" aria-labelledby="contact-heading">
           <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -119,12 +119,12 @@ export function ContactPage() {
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-4">
                       <div className="w-11 h-11 flex items-center justify-center flex-shrink-0 rounded-lg tint-green">
-                        <item.icon className="text-[#4caf22] w-5 h-5" aria-hidden="true" />
+                        <item.icon className="text-[#3e7d1c] w-5 h-5" aria-hidden="true" />
                       </div>
                       <div>
-                        <p className="eyebrow !flex !text-slate-400 mb-1">{item.label}</p>
+                        <p className="eyebrow !flex !text-slate-500 mb-1">{item.label}</p>
                         {item.href ? (
-                          <a href={item.href} className="text-[15px] font-medium text-slate-900 hover:text-[#4caf22] transition-colors cursor-pointer">
+                          <a href={item.href} className="text-[15px] font-medium text-slate-900 hover:text-[#3e7d1c] transition-colors cursor-pointer">
                             {item.value}
                           </a>
                         ) : (
@@ -146,7 +146,7 @@ export function ContactPage() {
                     <h2 className="text-2xl font-semibold text-slate-900 mb-2">Message sent</h2>
                     <p className="text-slate-600 text-[15px] mb-4">Thank you for reaching out. We'll be in touch shortly.</p>
                     <p className="text-slate-500 text-sm">
-                      Need us sooner? Call <a href="tel:0800113996" className="text-[#4caf22] font-medium">0800 113 996</a>.
+                      Need us sooner? Call <a href="tel:0800113996" className="text-[#3e7d1c] font-medium">0800 113 996</a>.
                     </p>
                   </div>
                 ) : (

@@ -107,7 +107,7 @@ export function ProjectsSyncPage() {
               </div>
             )}
 
-            <p className="text-xs text-slate-400 mb-6">Synced at {now} NZT</p>
+            <p className="text-xs text-slate-500 mb-6">Synced at {now} NZT</p>
 
             <Link to="/projects" className="btn-primary text-sm">
               View live projects →
