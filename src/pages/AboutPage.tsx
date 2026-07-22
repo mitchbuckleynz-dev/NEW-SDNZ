@@ -87,7 +87,7 @@ export function AboutPage() {
               <p className="eyebrow justify-center mb-4">The People</p>
               <h2 id="team-heading" className="text-2xl font-semibold text-slate-900 tracking-tight">Meet the team</h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-5">
+            <div className="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
               {TEAM.map((member) => (
                 <article key={member.name} className="card p-6 md:p-8">
                   <div className="w-20 h-20 rounded-full overflow-hidden mb-5 border border-slate-200">
