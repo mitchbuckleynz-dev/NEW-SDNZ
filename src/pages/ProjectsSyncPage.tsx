@@ -54,81 +54,62 @@ export function ProjectsSyncPage() {
   });
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: '#0a0f1e',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-      padding: '24px',
-    }}>
-      <div style={{
-        background: '#111827',
-        border: '1px solid #1e293b',
-        borderRadius: '20px',
-        padding: '48px',
-        maxWidth: '500px',
-        width: '100%',
-        textAlign: 'center',
-        boxShadow: '0 25px 50px rgba(0,0,0,0.5)',
-      }}>
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
+      <div className="card p-8 md:p-12 max-w-lg w-full text-center">
         {/* Logo */}
         <img
           src="/logo.png"
           alt="Sprinkler Design NZ"
-          style={{ height: '40px', marginBottom: '32px', opacity: 0.9 }}
+          className="h-12 mx-auto mb-8 object-contain"
         />
 
         {/* Loading */}
         {state === 'loading' && (
           <>
-            <div style={{ fontSize: '48px', marginBottom: '16px' }}>⏳</div>
-            <h1 style={{ color: '#f8fafc', fontSize: '20px', marginBottom: '8px' }}>Syncing Projects from Notion…</h1>
-            <p style={{ color: '#64748b', fontSize: '14px' }}>Fetching published projects, please wait.</p>
+            <div className="w-8 h-8 border-2 border-slate-200 border-t-[#73d63b] rounded-full animate-spin mx-auto mb-5" />
+            <h1 className="text-slate-900 text-xl font-semibold mb-2">Syncing Projects from Notion…</h1>
+            <p className="text-slate-500 text-sm m-0">Fetching published projects, please wait.</p>
           </>
         )}
 
         {/* Success */}
         {state === 'success' && data && (
           <>
-            <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>
-            <h1 style={{ color: '#f8fafc', fontSize: '22px', fontWeight: 700, marginBottom: '8px' }}>
-              Projects Synced
-            </h1>
-            <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '32px' }}>
-              Your project portfolio is up to date.
-            </p>
+            <div className="check-badge mx-auto mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h1 className="text-slate-900 text-xl font-semibold mb-2">Projects synced</h1>
+            <p className="text-slate-500 text-sm mb-8">Your project portfolio is up to date.</p>
 
             {/* Stats */}
-            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '28px' }}>
-              <div style={{ background: '#0a0f1e', border: '1px solid #1e293b', borderRadius: '12px', padding: '16px 28px' }}>
-                <div style={{ fontSize: '32px', fontWeight: 800, color: '#00e5a0' }}>{data.synced}</div>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '4px' }}>Published</div>
+            <div className="flex gap-4 justify-center mb-7">
+              <div className="figure-block !py-4 !px-7">
+                <p className="eyebrow justify-center mb-1">Published</p>
+                <p className="text-3xl font-bold text-slate-900 tabular-nums m-0">{data.synced}</p>
               </div>
               {data.removed > 0 && (
-                <div style={{ background: '#0a0f1e', border: '1px solid #1e293b', borderRadius: '12px', padding: '16px 28px' }}>
-                  <div style={{ fontSize: '32px', fontWeight: 800, color: '#f59e0b' }}>{data.removed}</div>
-                  <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '4px' }}>Removed</div>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 py-4 px-7">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 mb-1 m-0">Removed</p>
+                  <p className="text-3xl font-bold text-slate-900 tabular-nums m-0">{data.removed}</p>
                 </div>
               )}
             </div>
 
             {/* Project list */}
             {data.results.length > 0 && (
-              <div style={{ borderTop: '1px solid #1e293b', paddingTop: '16px', marginBottom: '24px', textAlign: 'left' }}>
+              <div className="border-t border-slate-200 pt-4 mb-6 text-left">
                 {data.results.map((r) => (
-                  <div key={r.slug} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '7px 0', fontSize: '13px', color: '#94a3b8' }}>
-                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: r.status === 'error' ? '#ef4444' : '#00e5a0', flexShrink: 0 }} />
-                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.slug}</span>
+                  <div key={r.slug} className="flex items-center gap-2.5 py-1.5 text-[13px] text-slate-600">
+                    <span className={`w-2 h-2 rounded-full flex-shrink-0 ${r.status === 'error' ? 'bg-[#e5433a]' : 'bg-[#73d63b]'}`} />
+                    <span className="overflow-hidden text-ellipsis whitespace-nowrap">{r.slug}</span>
                   </div>
                 ))}
               </div>
             )}
 
-            <p style={{ fontSize: '12px', color: '#334155', marginBottom: '20px' }}>Synced at {now} NZT</p>
+            <p className="text-xs text-slate-400 mb-6">Synced at {now} NZT</p>
 
-            <Link to="/projects" style={{ display: 'inline-block', background: '#00e5a0', color: '#0a0f1e', fontWeight: 700, fontSize: '14px', padding: '12px 28px', borderRadius: '8px', textDecoration: 'none' }}>
+            <Link to="/projects" className="btn-primary text-sm">
               View live projects →
             </Link>
           </>
@@ -137,17 +118,16 @@ export function ProjectsSyncPage() {
         {/* Error */}
         {state === 'error' && (
           <>
-            <div style={{ fontSize: '48px', marginBottom: '16px' }}>⚠️</div>
-            <h1 style={{ color: '#f8fafc', fontSize: '20px', marginBottom: '12px' }}>Sync Failed</h1>
-            <div style={{ background: '#1c0a0a', border: '1px solid #7f1d1d', borderRadius: '10px', padding: '16px', color: '#fca5a5', fontSize: '13px', textAlign: 'left', marginBottom: '24px' }}>
+            <h1 className="text-slate-900 text-xl font-semibold mb-4">Sync failed</h1>
+            <div className="rounded-lg border border-[#e5433a]/40 bg-[#e5433a]/5 p-4 text-[#b91c1c] text-[13px] text-left mb-6">
               {errorMsg}
             </div>
-            <p style={{ color: '#64748b', fontSize: '13px', marginBottom: '20px' }}>
-              Check that <code style={{ background: '#1e293b', padding: '2px 6px', borderRadius: '4px' }}>NOTION_PROJECTS_DB_ID</code> is set in Supabase secrets.
+            <p className="text-slate-500 text-[13px] mb-6">
+              Check that <code className="bg-slate-100 border border-slate-200 rounded px-1.5 py-0.5 text-slate-700">NOTION_PROJECTS_DB_ID</code> is set in Supabase secrets.
             </p>
             <button
               onClick={() => { setState('loading'); setErrorMsg(''); window.location.reload(); }}
-              style={{ background: '#1e293b', color: '#e2e8f0', border: '1px solid #334155', borderRadius: '8px', padding: '10px 24px', cursor: 'pointer', fontSize: '14px' }}
+              className="btn-ghost text-sm"
             >
               Try again
             </button>

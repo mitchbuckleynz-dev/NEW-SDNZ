@@ -6,3 +6,8 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# local tooling / backups (not part of the site)
+.claude/
+backups/
+graphify-out/

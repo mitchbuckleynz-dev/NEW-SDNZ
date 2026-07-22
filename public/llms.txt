@@ -29,7 +29,6 @@ We are a fully independent consultancy with no conflicts of interest, serving cl
 ## Team
 
 - **Mitch Buckley** — Director & Principal Fire Protection Designer. 20+ years industry experience. PS1 Author. Former network engineer who transitioned to fire protection in 2004, completing Level 3 & 4 apprenticeship. Ironman NZ finisher.
-- **Josef Thompson-Smith** — Senior Fire Protection Designer & BIM Manager. 7+ years experience. Expert in Revit, BIM360, Revizto.
 - **Laura Cullen** — Fire Protection Designer. Mechanical engineer (Beca, WSP background). Currently completing Diploma of Fire Engineering at Open Polytechnic NZ.
 
 ## Contact
@@ -44,6 +43,6 @@ We are a fully independent consultancy with no conflicts of interest, serving cl
 - Homepage: https://www.sprinklerdesign.co.nz/
 - Services: https://www.sprinklerdesign.co.nz/services
 - Projects: https://www.sprinklerdesign.co.nz/projects
-- About: https://www.sprinklerdesign.co.nz/about
-- Careers: https://www.sprinklerdesign.co.nz/careers
-- Contact: https://www.sprinklerdesign.co.nz/contact-us
+- About & Careers: https://www.sprinklerdesign.co.nz/about
+- Contact: https://www.sprinklerdesign.co.nz/contact
+- Instant Fee Estimate: https://www.sprinklerdesign.co.nz/estimate
