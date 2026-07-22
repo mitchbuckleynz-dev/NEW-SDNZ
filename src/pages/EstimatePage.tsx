@@ -10,7 +10,8 @@ import { EstimateForm } from '../components/EstimateForm';
 
 const SCOPE_TEXT =
   'This estimate is for fire protection consulting and design, including ' +
-  'coordination at design stages and documentation for tender and consent.';
+  'coordination at design stages, documentation for tender and consent, ' +
+  'and the PS1 design producer statement.';
 
 const DISCLAIMER_TEXT =
   'This is an indicative estimate only, generated automatically from the ' +
