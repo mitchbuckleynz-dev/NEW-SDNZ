@@ -117,6 +117,15 @@ export function EstimateForm() {
         const v = params.get(key);
         if (v) attr[key] = v;
       }
+      if (Object.keys(attr).length === 0) {
+        // SPA route changes drop the query string — the ads land on the
+        // homepage, so fall back to the stash main.tsx saved on first load.
+        const stashed = sessionStorage.getItem('sdnz_attribution');
+        if (stashed) {
+          attributionRef.current = JSON.parse(stashed) as Record<string, string>;
+          return;
+        }
+      }
       if (document.referrer) attr.referrer = document.referrer;
       attributionRef.current = attr;
     } catch {

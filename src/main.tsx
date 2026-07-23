@@ -17,6 +17,26 @@ import './index.css';
 // To enable maintenance mode, add VITE_MAINTENANCE=true to your environment variables
 const isMaintenance = import.meta.env.VITE_MAINTENANCE === 'true';
 
+// Stash ad-campaign attribution (utm_* / li_fat_id) from the landing URL in
+// sessionStorage. The LinkedIn ads land on the homepage; SPA routing drops
+// the query string on the way to /estimate, so the estimator form falls back
+// to this stash (see EstimateForm). Session-scoped: dies with the tab.
+try {
+  const params = new URLSearchParams(window.location.search);
+  const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'li_fat_id'];
+  const attr: Record<string, string> = {};
+  for (const k of keys) {
+    const v = params.get(k);
+    if (v) attr[k] = v;
+  }
+  if (Object.keys(attr).length > 0) {
+    if (document.referrer) attr.referrer = document.referrer;
+    sessionStorage.setItem('sdnz_attribution', JSON.stringify(attr));
+  }
+} catch {
+  // Attribution is best-effort only.
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {/* Respect the OS "reduce motion" setting for all motion/react animations */}
