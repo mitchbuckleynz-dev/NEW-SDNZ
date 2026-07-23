@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { MotionConfig } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import App from './App.tsx';
 import { ServicesPage } from './pages/ServicesPage.tsx';
 import { ProjectsPage } from './pages/ProjectsPage.tsx';
@@ -53,5 +54,6 @@ createRoot(document.getElementById('root')!).render(
       )}
     </BrowserRouter>
     </MotionConfig>
+    <Analytics />
   </StrictMode>,
 );
