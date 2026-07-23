@@ -8,8 +8,43 @@
  * figures (the range is emailed).
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
+
+/* ---- LinkedIn Ads conversion tracking ---- */
+
+// Insight Tag is loaded site-wide in index.html; this is the "Estimator"
+// lead conversion created in Campaign Manager.
+const LINKEDIN_CONVERSION_ID = 27341660;
+
+declare global {
+  interface Window {
+    lintrk?: (action: string, data: { conversion_id: number }) => void;
+  }
+}
+
+/** Fire the LinkedIn conversion on successful submission. The tag's queue
+ *  stub means this is safe even if insight.min.js hasn't loaded yet.
+ *  Tracking must never break the form. */
+function fireLinkedInConversion() {
+  try {
+    window.lintrk?.('track', { conversion_id: LINKEDIN_CONVERSION_ID });
+  } catch {
+    /* no-op */
+  }
+}
+
+/** Ad-attribution params captured from the landing URL (LinkedIn appends
+ *  li_fat_id to ad clicks; utm_* come from the campaign URLs). Forwarded
+ *  with the lead so the CRM records the source. */
+const ATTRIBUTION_PARAMS = [
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_content',
+  'utm_term',
+  'li_fat_id',
+] as const;
 
 /* ---- Catalogue (keys MUST match the CRM's building-types.ts) ---- */
 
@@ -69,6 +104,25 @@ export function EstimateForm() {
   const [submitting, setSubmitting] = useState(false);
   const [outcome, setOutcome] = useState<Outcome | null>(null);
   const [emailed, setEmailed] = useState(false);
+
+  // Ad-campaign attribution, captured once from the landing URL so it
+  // survives the two-step flow. A ref (not state) — never rendered, only
+  // read at submit time.
+  const attributionRef = useRef<Record<string, string>>({});
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const attr: Record<string, string> = {};
+      for (const key of ATTRIBUTION_PARAMS) {
+        const v = params.get(key);
+        if (v) attr[key] = v;
+      }
+      if (document.referrer) attr.referrer = document.referrer;
+      attributionRef.current = attr;
+    } catch {
+      // Attribution is best-effort only.
+    }
+  }, []);
 
   function toggleDiscipline(key: DisciplineKey) {
     setDisciplines((cur) =>
@@ -132,6 +186,9 @@ export function EstimateForm() {
           email: email.trim(),
           phone: phone.trim(),
           company_website: honeypot,
+          ...(Object.keys(attributionRef.current).length > 0
+            ? { attribution: attributionRef.current }
+            : {}),
         }),
       });
       const data = (await res.json().catch(() => null)) as
@@ -142,6 +199,8 @@ export function EstimateForm() {
         setSubmitting(false);
         return;
       }
+      // Lead captured — fire the LinkedIn ad conversion.
+      fireLinkedInConversion();
       setOutcome(data.outcome ?? 'range');
       setEmailed(Boolean(data.emailed));
       setStep('done');

@@ -85,6 +85,13 @@ export default async function handler(req: Request): Promise<Response> {
     email: str(body.email),
     phone: str(body.phone),
     company_website: "",
+    // Ad attribution (utm_* / li_fat_id / referrer) — the CRM allow-lists
+    // and length-caps the keys server-side, so pass through as-is.
+    ...(body.attribution &&
+    typeof body.attribution === "object" &&
+    !Array.isArray(body.attribution)
+      ? { attribution: body.attribution }
+      : {}),
   };
 
   try {
