@@ -74,6 +74,28 @@ const MAX_SECTIONS = 3;
 const MAX_STOREYS = 20;
 const MAX_AREA_M2 = 50_000;
 
+/* ---- Lead-field validation (keep in sync with the CRM's
+        src/lib/estimate/validation.ts — the API enforces the same rules,
+        plus a DNS check that the email domain exists) ---- */
+
+const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/;
+
+function isValidEmailFormat(email: string): boolean {
+  const e = email.trim();
+  if (e.length < 6 || e.length > 254) return false;
+  if (e.includes('..')) return false;
+  return EMAIL_RE.test(e);
+}
+
+/** Plausible phone: phone-ish characters only, 7–15 digits. */
+function isValidPhone(raw: string): boolean {
+  const cleaned = raw.trim();
+  if (cleaned.length === 0 || cleaned.length > 25) return false;
+  if (!/^\+?[\d\s().-]+$/.test(cleaned)) return false;
+  const digits = cleaned.replace(/\D/g, '');
+  return digits.length >= 7 && digits.length <= 15;
+}
+
 type Step = 'project' | 'details' | 'done';
 type Outcome = 'range' | 'contact';
 
@@ -175,9 +197,10 @@ export function EstimateForm() {
       return setError('Please enter a project name or reference.');
     if (!name.trim()) return setError('Please enter your name.');
     if (!company.trim()) return setError('Please enter your company.');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
+    if (!isValidEmailFormat(email))
       return setError('Please enter a valid email address.');
-    if (!phone.trim()) return setError('Please enter your phone number.');
+    if (!isValidPhone(phone))
+      return setError('Please enter a valid phone number.');
 
     setSubmitting(true);
     try {
