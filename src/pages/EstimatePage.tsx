@@ -13,6 +13,11 @@ const SCOPE_TEXT =
   'coordination at design stages, documentation for tender and consent, ' +
   'and the PS1 design producer statement.';
 
+// Standard-inclusion callout — keep in sync with the CRM's estimate email.
+const BIM_INCLUSION_TEXT =
+  'Our design includes a BIM-coordinated design to LOD 300 ' +
+  '(Level of Development 300).';
+
 const DISCLAIMER_TEXT =
   'This is an indicative estimate only, generated automatically from the ' +
   'limited information provided. It is not a formal fee proposal, offer, or ' +
@@ -40,7 +45,10 @@ export function EstimatePage() {
               Tell us about your building and we'll email you an indicative design
               fee range in under a minute — no obligation.
             </p>
-            <p className="text-slate-500 text-sm m-0">{SCOPE_TEXT}</p>
+            <p className="text-slate-500 text-sm m-0">
+              {SCOPE_TEXT}{' '}
+              <span className="font-medium text-slate-700">{BIM_INCLUSION_TEXT}</span>
+            </p>
           </div>
         </section>
 
