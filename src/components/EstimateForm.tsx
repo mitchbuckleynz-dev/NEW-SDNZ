@@ -96,6 +96,7 @@ export function EstimateForm() {
   const [projectName, setProjectName] = useState('');
   const [projectLocation, setProjectLocation] = useState('');
   const [name, setName] = useState('');
+  const [company, setCompany] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [honeypot, setHoneypot] = useState('');
@@ -173,6 +174,7 @@ export function EstimateForm() {
     if (!projectName.trim())
       return setError('Please enter a project name or reference.');
     if (!name.trim()) return setError('Please enter your name.');
+    if (!company.trim()) return setError('Please enter your company.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
       return setError('Please enter a valid email address.');
     if (!phone.trim()) return setError('Please enter your phone number.');
@@ -192,6 +194,7 @@ export function EstimateForm() {
           projectName: projectName.trim(),
           projectLocation: projectLocation.trim(),
           name: name.trim(),
+          company: company.trim(),
           email: email.trim(),
           phone: phone.trim(),
           company_website: honeypot,
@@ -384,15 +387,27 @@ export function EstimateForm() {
             </div>
           </div>
 
-          <div>
-            <label className="field-label" htmlFor="est-name">Name</label>
-            <input
-              id="est-name"
-              className="input-field"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              autoComplete="name"
-            />
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div>
+              <label className="field-label" htmlFor="est-name">Name</label>
+              <input
+                id="est-name"
+                className="input-field"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                autoComplete="name"
+              />
+            </div>
+            <div>
+              <label className="field-label" htmlFor="est-company">Company</label>
+              <input
+                id="est-company"
+                className="input-field"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                autoComplete="organization"
+              />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">

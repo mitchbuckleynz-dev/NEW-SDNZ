@@ -82,6 +82,7 @@ export default async function handler(req: Request): Promise<Response> {
     projectName: str(body.projectName),
     projectLocation: str(body.projectLocation),
     name: str(body.name),
+    company: str(body.company),
     email: str(body.email),
     phone: str(body.phone),
     company_website: "",
