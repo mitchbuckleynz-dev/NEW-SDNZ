@@ -12,6 +12,7 @@ import { EstimatePage } from './pages/EstimatePage.tsx';
 import { DemoPage } from './pages/DemoPage.tsx';
 import { MaintenancePage } from './pages/MaintenancePage.tsx';
 import { ProjectsSyncPage } from './pages/ProjectsSyncPage.tsx';
+import { ToolsPage } from './pages/ToolsPage.tsx';
 import './index.css';
 
 // To enable maintenance mode, add VITE_MAINTENANCE=true to your environment variables
@@ -68,6 +69,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/estimate" element={<EstimatePage />} />
           <Route path="/demo" element={<DemoPage />} />
           <Route path="/projects-sync" element={<ProjectsSyncPage />} />
+          <Route path="/tools" element={<ToolsPage />} />
           {/* Old routes (/news, /sync, etc.) fall through to home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

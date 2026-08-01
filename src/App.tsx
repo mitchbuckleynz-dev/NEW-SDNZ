@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { motion, useInView } from 'motion/react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Navbar, Footer, CtaBand, usePageMeta } from './components/site';
+import { ToolIcon, TOOL_IDS } from './components/ToolIcon';
 import { DISCIPLINES, SECTORS, STATS, TESTIMONIALS } from './data/content';
 
 // ============================================================
@@ -117,6 +118,63 @@ const ServicesOverview = () => (
           <ArrowRight className="w-4 h-4" aria-hidden="true" />
         </Link>
       </div>
+    </div>
+  </section>
+);
+
+// ============================================================
+// HEAD START — compact strip
+// ============================================================
+/**
+ * Sits directly after the four disciplines: here's what we design, and here's
+ * what we built for the people who install it.
+ *
+ * Deliberately a strip and not a full section — the homepage's job here is to
+ * be a pointer, not a second pitch. /tools does the persuading, and it is the
+ * only landing page for Head Start; pointing ads at a duplicate would split the
+ * SEO and drift out of sync.
+ *
+ * The link is tagged so registrations from our own traffic can be told apart
+ * from paid — the estimator already captures utm_*, same pattern.
+ */
+const HeadStart = () => (
+  <section
+    id="head-start"
+    className="py-12 bg-white border-y border-slate-200"
+    aria-labelledby="head-start-heading"
+  >
+    <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex flex-wrap items-center gap-7">
+      <div className="flex gap-2 shrink-0" aria-hidden="true">
+        {TOOL_IDS.map((id) => (
+          <span
+            key={id}
+            className="w-12 h-12 flex items-center justify-center rounded-lg tint-green border border-[#73d63b] text-[#3e7d1c]"
+          >
+            <ToolIcon id={id} className="w-[26px] h-[26px]" />
+          </span>
+        ))}
+      </div>
+
+      <div className="flex-1 min-w-[260px]">
+        <h2
+          id="head-start-heading"
+          className="text-xl font-semibold text-slate-900 tracking-tight m-0"
+        >
+          Head Start — four free tools for sprinkler fitters
+        </h2>
+        <p className="mt-1 text-sm text-slate-600 m-0">
+          Head spacing, obstruction rules, drawing scale and cut lengths, to NZS 4541:2020. Live 10
+          August.
+        </p>
+      </div>
+
+      <Link
+        to="/tools?utm_source=site&utm_medium=homepage"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-[#3e7d1c] transition-opacity duration-150 hover:opacity-80"
+      >
+        See the tools
+        <ArrowRight className="w-4 h-4" aria-hidden="true" />
+      </Link>
     </div>
   </section>
 );
@@ -258,6 +316,7 @@ export default function App() {
       <main id="main">
         <Hero />
         <ServicesOverview />
+        <HeadStart />
         <WhyUs />
         <Sectors />
         <Testimonials />

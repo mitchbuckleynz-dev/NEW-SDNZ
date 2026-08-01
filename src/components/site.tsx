@@ -12,6 +12,7 @@ import { Phone, Mail, Menu, X } from 'lucide-react';
 export const NAV_LINKS = [
   { name: 'Home', href: '/' },
   { name: 'Services', href: '/services' },
+  { name: 'Tools', href: '/tools' },
   { name: 'Projects', href: '/projects' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
