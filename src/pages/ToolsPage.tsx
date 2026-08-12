@@ -100,7 +100,6 @@ export function ToolsPage() {
                   See the four tools
                 </a>
               </div>
-              <p className="mt-6 text-sm font-semibold text-[#3e7d1c]">All four tools live 10 August</p>
             </div>
 
             {/* Replace with a real screenshot export once you have one. */}
@@ -239,13 +238,13 @@ export function ToolsPage() {
         <section className="py-20 md:py-24 bg-white">
           <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
             <div className="card p-10 md:p-14 text-center bg-gradient-to-b from-white to-slate-50">
-              <p className="eyebrow justify-center mb-4">Live 10 August</p>
+              <p className="eyebrow justify-center mb-4">Live Now</p>
               <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight mb-3">
                 Free. Register once, use all four.
               </h2>
               <p className="text-slate-600 mb-8 max-w-xl mx-auto text-[15px] leading-relaxed">
-                The Sprinkler Spacer is live now. Obstruction, Drawing Scale and Sloped Pipe join it on
-                10 August — register today and they&apos;ll just appear.
+                All four tools are live. Sprinkler Spacer, Obstruction, Drawing Scale and Sloped Pipe
+                — one registration gets you the lot.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a href={APP_URL} className="btn-primary" id="tools-footer-cta">
