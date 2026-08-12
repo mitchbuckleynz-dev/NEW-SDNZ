@@ -18,7 +18,7 @@ const TOOLS = [
   {
     id: 'spacing',
     name: 'Sprinkler Spacer',
-    standard: 'NZS 4541:2020',
+    standard: 'Spacing & coverage',
     blurb:
       'Room dimensions in, head count and spacings out — with every wall and between-head distance checked against the standard.',
     onsite: 'Know how many heads a room takes before you start setting out.',
@@ -26,10 +26,10 @@ const TOOLS = [
   {
     id: 'obstruction',
     name: 'Obstruction Calculator',
-    standard: 'NZS 4541:2020',
+    standard: 'Obstruction rules',
     blurb:
-      'One sprinkler against one obstruction, resolved on the real Table 5.2 rows — and it tells you how far to move the head if it fails.',
-    onsite: 'Settle the beam argument on the spot, with the clause reference.',
+      'One sprinkler against one obstruction, resolved against the published obstruction rules — and it tells you how far to move the head if it fails.',
+    onsite: 'Settle the beam argument on the spot, with the reasoning shown.',
   },
   {
     id: 'scale',
@@ -56,16 +56,16 @@ const STEPS = [
 ];
 
 const STANDARDS = [
-  { code: 'NZS 4541:2020', desc: 'Automatic fire sprinkler systems — spacing, coverage and obstruction rules.' },
-  { code: 'Table 5.2', desc: 'Sprinkler distances from obstructions, including the conventional-upright column.' },
-  { code: 'Figure 5.4', desc: 'The section the obstruction tool draws, dimensioned the way the standard does.' },
+  { code: 'Spacing & coverage', desc: 'Maximum head spacings, wall distances and coverage areas for automatic fire sprinkler systems.' },
+  { code: 'Obstruction distances', desc: 'Sprinkler distances from obstructions, including conventional upright heads.' },
+  { code: 'Sectional check', desc: 'The obstruction tool draws the section and dimensions it the way the standard does.' },
   { code: 'Guidance only', desc: 'Head Start is a check, not a design. Always verify independently and consult a qualified fire protection engineer.' },
 ];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export function ToolsPage() {
   usePageMeta(
-    'Head Start | Free NZS 4541 tools for NZ sprinkler fitters',
+    'Head Start | Free tools for NZ sprinkler fitters',
     'Four free fire protection tools for New Zealand sprinkler fitters — head spacing, obstruction rules, drawing scale and sloped pipe cut lengths. Built by Sprinkler Design NZ.',
   );
 
@@ -79,7 +79,7 @@ export function ToolsPage() {
             <div>
               <p className="eyebrow mb-5">Free for the NZ Fire Protection Industry</p>
               <h1 className="text-3xl md:text-5xl font-semibold text-slate-900 tracking-tight leading-[1.05] mb-5">
-                The NZS 4541 maths,
+                The sprinkler maths,
                 <br />
                 in your pocket.
               </h1>
@@ -216,7 +216,7 @@ export function ToolsPage() {
               </h2>
               <p className="text-[15px] text-slate-600 leading-relaxed">
                 The rules come from the same standard your design is assessed against — transcribed,
-                tested and shown with their clause reference on screen.
+                tested, and shown with their working on screen.
               </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">

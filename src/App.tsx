@@ -163,8 +163,8 @@ const HeadStart = () => (
           Head Start — four free tools for sprinkler fitters
         </h2>
         <p className="mt-1 text-sm text-slate-600 m-0">
-          Head spacing, obstruction rules, drawing scale and cut lengths, to NZS 4541:2020. Live 10
-          August.
+          Head spacing, obstruction rules, drawing scale and cut lengths, built to the standard. Live
+          10 August.
         </p>
       </div>
 
