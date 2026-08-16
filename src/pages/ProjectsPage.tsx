@@ -72,11 +72,15 @@ const StatCard = ({ icon: Icon, value, label }: { icon: React.ElementType; value
 
 // ─── Main Component ──────────────────────────────────────────────────────────
 
-export const ProjectsPage = () => {
-  usePageMeta(
-    'Project Portfolio | Sprinkler Design NZ',
+/** Also read at build time by the prerenderer — see scripts/prerender.mjs. */
+export const meta = {
+  title: 'Project Portfolio | Sprinkler Design NZ',
+  description:
     'A selection of landmark New Zealand projects showing our BIM fire protection design work: hospitals, arenas, warehouses, civic buildings and more.',
-  );
+};
+
+export const ProjectsPage = () => {
+  usePageMeta(meta.title, meta.description);
 
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -256,8 +260,12 @@ export const ProjectsPage = () => {
                     {/* Highlights */}
                     {highlights.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {highlights.slice(0, 2).map((h) => (
-                          <span key={h.label} className="inline-flex items-center text-xs px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200">
+                        {/* Keyed by position, not by label: highlight labels come
+                            from free-text CMS data and are not unique (several
+                            projects use "Detail" twice). This list is a fixed
+                            slice that never reorders, so the index is stable. */}
+                        {highlights.slice(0, 2).map((h, i) => (
+                          <span key={i} className="inline-flex items-center text-xs px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200">
                             <span className="text-slate-500">{h.label}:</span>
                             <span className="text-slate-900 font-semibold ml-1 tabular-nums">{h.value}</span>
                           </span>
@@ -268,8 +276,10 @@ export const ProjectsPage = () => {
                     {/* Services */}
                     {project.services && project.services.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-200">
-                        {project.services.slice(0, 4).map((s) => (
-                          <span key={s} className="tag">
+                        {/* Same reasoning as the highlights above — service names
+                            are free-text and not guaranteed distinct. */}
+                        {project.services.slice(0, 4).map((s, i) => (
+                          <span key={i} className="tag">
                             {s}
                           </span>
                         ))}

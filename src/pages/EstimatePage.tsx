@@ -24,11 +24,15 @@ const DISCLAIMER_TEXT =
   'quotation, and is subject to a full design review of the actual project. ' +
   'Your final fee may be higher or lower.';
 
-export function EstimatePage() {
-  usePageMeta(
-    'Get an Instant Estimate | Sprinkler Design NZ',
+/** Also read at build time by the prerenderer — see scripts/prerender.mjs. */
+export const meta = {
+  title: 'Get an Instant Estimate | Sprinkler Design NZ',
+  description:
     'Get an instant, indicative fire protection design fee range for your project: sprinklers, alarms, hydrants, hose reels & extinguishers.',
-  );
+};
+
+export function EstimatePage() {
+  usePageMeta(meta.title, meta.description);
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">

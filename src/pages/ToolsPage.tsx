@@ -63,11 +63,15 @@ const STANDARDS = [
 ];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-export function ToolsPage() {
-  usePageMeta(
-    'Head Start | Free tools for NZ sprinkler fitters',
+/** Also read at build time by the prerenderer — see scripts/prerender.mjs. */
+export const meta = {
+  title: 'Head Start | Free tools for NZ sprinkler fitters',
+  description:
     'Four free fire protection tools for New Zealand sprinkler fitters: head spacing, obstruction rules, drawing scale and sloped pipe cut lengths. Built by Sprinkler Design NZ.',
-  );
+};
+
+export function ToolsPage() {
+  usePageMeta(meta.title, meta.description);
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
@@ -105,7 +109,7 @@ export function ToolsPage() {
             {/* Replace with a real screenshot export once you have one. */}
             <div className="flex justify-center">
               <img
-                src="/images/head-start-launcher.png"
+                src="/images/head-start-launcher.webp"
                 alt="Head Start app showing its four tools"
                 width={300}
                 height={560}

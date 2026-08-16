@@ -9,11 +9,15 @@ import { ChevronRight } from 'lucide-react';
 import { Navbar, Footer, CtaBand, usePageMeta } from '../components/site';
 import { DISCIPLINES, PROCESS_STAGES, SERVICES } from '../data/content';
 
-export function ServicesPage() {
-  usePageMeta(
-    'Services | Sprinkler Design NZ',
+/** Also read at build time by the prerenderer — see scripts/prerender.mjs. */
+export const meta = {
+  title: 'Services | Sprinkler Design NZ',
+  description:
     'Fire sprinkler, alarm & detection, hydrant, and hose reel & extinguisher design to NZ standards, plus BIM coordination, consulting and 3D scanning.',
-  );
+};
+
+export function ServicesPage() {
+  usePageMeta(meta.title, meta.description);
 
   const [expanded, setExpanded] = useState<string | null>(null);
 

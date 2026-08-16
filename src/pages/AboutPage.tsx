@@ -9,11 +9,15 @@ import { ArrowRight, Award, CheckCircle2, ChevronDown, Users, Zap } from 'lucide
 import { Navbar, Footer, usePageMeta } from '../components/site';
 import { TEAM, FAQS, SOFTWARE, STANDARDS } from '../data/content';
 
-export function AboutPage() {
-  usePageMeta(
-    'About Us | Sprinkler Design NZ',
+/** Also read at build time by the prerenderer — see scripts/prerender.mjs. */
+export const meta = {
+  title: 'About Us | Sprinkler Design NZ',
+  description:
     "Meet the team behind New Zealand's leading independent BIM fire protection design consultancy. Our approach, compliance credentials and careers.",
-  );
+};
+
+export function AboutPage() {
+  usePageMeta(meta.title, meta.description);
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -40,7 +44,7 @@ export function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div className="relative">
                 <img
-                  src="/images/nz_fire_pump_room_transition_render.png"
+                  src="/images/nz-fire-pump-room-transition-render.webp"
                   alt="BIM fire protection model in Revit - Sprinkler Design NZ"
                   className="w-full rounded-2xl border border-slate-200 shadow-sm object-cover"
                   style={{ minHeight: '360px', maxHeight: '480px' }}

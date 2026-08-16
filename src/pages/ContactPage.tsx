@@ -6,11 +6,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Phone, Mail, MapPin, CheckCircle2 } from 'lucide-react';
 import { Navbar, Footer, usePageMeta } from '../components/site';
 
-export function ContactPage() {
-  usePageMeta(
-    'Contact Us | Sprinkler Design NZ',
+/** Also read at build time by the prerenderer — see scripts/prerender.mjs. */
+export const meta = {
+  title: 'Contact Us | Sprinkler Design NZ',
+  description:
     'Get in touch with Sprinkler Design NZ. Call 0800 113 996 or send us a message for an obligation-free consultation on your fire protection design.',
-  );
+};
+
+export function ContactPage() {
+  usePageMeta(meta.title, meta.description);
 
   const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', phone: '', subject: '', message: '', submitted: false });
 

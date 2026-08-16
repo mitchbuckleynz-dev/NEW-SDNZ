@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
       'Major hospital redevelopment requiring complex multi-discipline BIM coordination and fully code-compliant fire protection design across critical care, surgical, and inpatient wings.',
     shortDesc:
       'Complex multi-discipline BIM coordination and fire protection design for a major hospital redevelopment.',
-    image: '/images/taranakihospital.jpg',
+    image: '/images/taranakihospital.webp',
     highlights: [
       { label: 'Project Value', value: '$300M+' },
       { label: 'Systems', value: 'Wet, Dry, Hydrant, Pumps, Tanks, Fabrication' },
@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
       "One of New Zealand's most significant infrastructure projects, a world-class multi-use arena for Christchurch requiring bespoke fire suppression design for large-assembly public spaces.",
     shortDesc:
       "World-class multi-use arena, one of NZ's most significant infrastructure projects.",
-    image: '/images/ONE NZ Stadium.png',
+    image: '/images/one-nz-stadium.webp',
     highlights: [
       { label: 'Capacity', value: '35,000 seats' },
       { label: 'Systems', value: 'Wet, Dry, Hydrant, Tanks, Pumps' },
@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
       'A landmark cultural facility integrating traditional Māori design with modern fire protection systems to meet both heritage and compliance requirements. A unique challenge requiring sensitivity and technical precision.',
     shortDesc:
       'Heritage fire protection design for a landmark Māori cultural facility.',
-    image: '/images/thelivingpa.jpg',
+    image: '/images/thelivingpa.webp',
     highlights: [
       { label: 'Challenge', value: 'Cultural Integration' },
       { label: 'Systems', value: 'Wet Pipe, Misting' },
@@ -100,7 +100,7 @@ export const PROJECTS: Project[] = [
     description:
       'Large-scale retail distribution centre fire protection design, including special hazards for high-piled storage and comprehensive BIM coordination with structural and mechanical trades.',
     shortDesc: 'Large-scale distribution centre with special hazards and full BIM coordination.',
-    image: '/images/kmartpunga.png',
+    image: '/images/kmartpunga.webp',
     highlights: [
       { label: 'Floor Area', value: '40,000m²+' },
       { label: 'Systems', value: 'ESFR, In-Rack, Special Hazards, Hydrants, 17,000 LPM' },
@@ -119,7 +119,7 @@ export const PROJECTS: Project[] = [
       'Mixed-use commercial development requiring staged fire protection design across multiple tenancies, with phased delivery to meet staggered construction timelines.',
     shortDesc:
       'Staged fire protection design across multiple mixed-use commercial tenancies.',
-    image: '/images/thecrossing.png',
+    image: '/images/thecrossing.webp',
     highlights: [
       { label: 'Stages', value: '2A & 2B' },
       { label: 'Systems', value: 'Sprinklers, Fire Alarms' },
@@ -137,7 +137,7 @@ export const PROJECTS: Project[] = [
       'High-security government facility requiring complex bespoke fire protection design, compliance with stringent Crown specifications, and careful coordination with security systems.',
     shortDesc:
       'Bespoke fire protection for a high-security government corrections facility.',
-    image: '/images/Waikeria-6.jpg',
+    image: '/images/waikeria-6.webp',
     highlights: [
       { label: 'Security Level', value: 'High-Security' },
       { label: 'Systems', value: 'Wet, Dry, Gaseous, Special Hazards' },
@@ -155,7 +155,7 @@ export const PROJECTS: Project[] = [
       'New civic precinct requiring detailed BIM coordination and fire protection design for public assembly buildings, council chambers, and associated car parking structures.',
     shortDesc:
       'BIM-led fire protection design for a new civic precinct and public assembly buildings.',
-    image: '/images/whangareicivi.png',
+    image: '/images/whangareicivi.webp',
     highlights: [
       { label: 'Type', value: 'Public Assembly' },
       { label: 'BIM Platform', value: 'Revit + Revizto' },
@@ -173,7 +173,7 @@ export const PROJECTS: Project[] = [
       'Premium high-rise residential development with integrated BIM fire protection design and multi-discipline coordination across structural, mechanical, and electrical trades.',
     shortDesc:
       'Premium high-rise residential BIM fire protection design and multi-discipline coordination.',
-    image: '/images/aalto.jpg',
+    image: '/images/aalto.webp',
     highlights: [
       { label: 'Type', value: 'High-Rise Residential' },
       { label: 'Systems', value: 'Wet Pipe, Misting' },

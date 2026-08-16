@@ -18,21 +18,61 @@ export const NAV_LINKS = [
   { name: 'Contact', href: '/contact' },
 ];
 
-/** Set document title + meta description for a page (SPA-level SEO). */
+const SITE_ORIGIN = 'https://www.sprinklerdesign.co.nz';
+
+/** Update (creating if absent) a <meta> tag keyed by name= or property=. */
+function setMetaTag(key: string, value: string, kind: 'name' | 'property' = 'name') {
+  let el = document.head.querySelector<HTMLMetaElement>(`meta[${kind}="${key}"]`);
+  if (!el) {
+    el = document.createElement('meta');
+    el.setAttribute(kind, key);
+    document.head.appendChild(el);
+  }
+  el.content = value;
+}
+
+/** Point <link rel="canonical"> at a URL. */
+function setCanonical(url: string) {
+  let el = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+  if (!el) {
+    el = document.createElement('link');
+    el.rel = 'canonical';
+    document.head.appendChild(el);
+  }
+  el.href = url;
+}
+
+/**
+ * Set title, description, canonical and social tags for a page (SPA-level SEO).
+ *
+ * The canonical URL is derived from the router rather than passed in, so a page
+ * can't declare the wrong one. This matters: index.html ships a single hardcoded
+ * canonical pointing at the home page, and without this every route would tell
+ * Google it is a duplicate of "/" and drop itself out of the index.
+ */
 export function usePageMeta(title: string, description?: string) {
+  const { pathname } = useLocation();
+
   useEffect(() => {
     document.title = title;
+
+    // Strip any trailing slash so /services and /services/ agree on one URL.
+    const canonicalUrl =
+      SITE_ORIGIN + (pathname === '/' ? '/' : pathname.replace(/\/+$/, ''));
+
+    setCanonical(canonicalUrl);
+    setMetaTag('og:url', canonicalUrl, 'property');
+    setMetaTag('og:title', title, 'property');
+    setMetaTag('twitter:title', title);
+
     if (description) {
-      let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.name = 'description';
-        document.head.appendChild(meta);
-      }
-      meta.content = description;
+      setMetaTag('description', description);
+      setMetaTag('og:description', description, 'property');
+      setMetaTag('twitter:description', description);
     }
+
     window.scrollTo(0, 0);
-  }, [title, description]);
+  }, [title, description, pathname]);
 }
 
 // ============================================================

@@ -1,18 +1,9 @@
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { hydrateRoot, createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import { MotionConfig } from 'motion/react';
 import { Analytics } from '@vercel/analytics/react';
-import App from './App.tsx';
-import { ServicesPage } from './pages/ServicesPage.tsx';
-import { ProjectsPage } from './pages/ProjectsPage.tsx';
-import { AboutPage } from './pages/AboutPage.tsx';
-import { ContactPage } from './pages/ContactPage.tsx';
-import { EstimatePage } from './pages/EstimatePage.tsx';
-import { DemoPage } from './pages/DemoPage.tsx';
-import { MaintenancePage } from './pages/MaintenancePage.tsx';
-import { ProjectsSyncPage } from './pages/ProjectsSyncPage.tsx';
-import { ToolsPage } from './pages/ToolsPage.tsx';
+import { AppRoutes } from './routes';
 import './index.css';
 
 // To enable maintenance mode, add VITE_MAINTENANCE=true to your environment variables
@@ -38,44 +29,24 @@ try {
   // Attribution is best-effort only.
 }
 
-createRoot(document.getElementById('root')!).render(
+const tree = (
   <StrictMode>
     {/* Respect the OS "reduce motion" setting for all motion/react animations */}
     <MotionConfig reducedMotion="user">
-    <BrowserRouter>
-      {isMaintenance ? (
-        <Routes>
-          {/* Public Maintenance Page */}
-          <Route path="/" element={<MaintenancePage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-
-          {/* Development Routes (for you to test) */}
-          <Route path="/dev" element={<App />} />
-          <Route path="/dev/services" element={<ServicesPage />} />
-          <Route path="/dev/projects" element={<ProjectsPage />} />
-          <Route path="/dev/about" element={<AboutPage />} />
-          <Route path="/dev/contact" element={<ContactPage />} />
-          <Route path="/dev/estimate" element={<EstimatePage />} />
-          <Route path="/dev/demo" element={<DemoPage />} />
-          <Route path="/dev/projects-sync" element={<ProjectsSyncPage />} />
-        </Routes>
-      ) : (
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/estimate" element={<EstimatePage />} />
-          <Route path="/demo" element={<DemoPage />} />
-          <Route path="/projects-sync" element={<ProjectsSyncPage />} />
-          <Route path="/tools" element={<ToolsPage />} />
-          {/* Old routes (/news, /sync, etc.) fall through to home */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      )}
-    </BrowserRouter>
+      <BrowserRouter>
+        <AppRoutes maintenance={isMaintenance} />
+      </BrowserRouter>
     </MotionConfig>
     <Analytics />
-  </StrictMode>,
+  </StrictMode>
 );
+
+// Prerendered routes ship with server-rendered markup in #root, so hydrate
+// those instead of throwing the existing DOM away. Everything else (and the
+// dev server, which serves the bare shell) still gets a fresh client render.
+const container = document.getElementById('root')!;
+if (container.hasChildNodes()) {
+  hydrateRoot(container, tree);
+} else {
+  createRoot(container).render(tree);
+}

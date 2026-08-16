@@ -201,7 +201,7 @@ const WhyUs = () => (
       <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <div className="relative">
           <img
-            src="/images/nz_fire_pump_room_transition_render.png"
+            src="/images/nz-fire-pump-room-transition-render.webp"
             alt="BIM fire protection model in Revit - Sprinkler Design NZ"
             width={640}
             height={640}
@@ -317,11 +317,15 @@ const Testimonials = () => (
 // ============================================================
 // APP ROOT — Home page
 // ============================================================
-export default function App() {
-  usePageMeta(
-    'Sprinkler Design NZ | Expert BIM Fire Protection Design & Consulting',
+/** Also read at build time by the prerenderer — see scripts/prerender.mjs. */
+export const meta = {
+  title: 'Sprinkler Design NZ | Expert BIM Fire Protection Design & Consulting',
+  description:
     "New Zealand's leading BIM fire protection design and consulting firm. Fire sprinklers, alarms, hydrants, and hose reels designed to NZ standards.",
-  );
+};
+
+export default function App() {
+  usePageMeta(meta.title, meta.description);
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">

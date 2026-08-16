@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap');
+/* Inter is loaded via <link rel="stylesheet"> in index.html, not @import here.
+   An @import inside the bundled CSS hides the font request behind a
+   CSS-parses-CSS chain, which defeats the preconnect hints in the document
+   head and delays first paint. */
 @import "tailwindcss";
 
 /* ============================================================
