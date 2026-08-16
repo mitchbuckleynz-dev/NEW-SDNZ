@@ -43,7 +43,7 @@ export function DemoPage() {
             See the big picture.
           </h1>
           <p className="text-slate-600 text-[15px] md:text-lg leading-relaxed">
-            This is a functional prototype. As you seamlessly scroll down, the generic static graphic splits apart into its constituent 3D BIM layers—perfect for visually explaining clash detection without long text.
+            Scroll down and the static graphic splits apart into its 3D BIM layers. It shows how clash detection works without a wall of text.
           </p>
 
           <div className="mt-16 text-slate-500 flex flex-col items-center gap-2">
@@ -136,10 +136,10 @@ export function DemoPage() {
                 <h2 className="text-2xl font-semibold mb-6 text-slate-900 tracking-tight">Full-stack coordination</h2>
                 <div className="space-y-5 text-slate-600 text-[15px] md:text-lg leading-relaxed">
                   <p>
-                    Instead of a flat photo of a screen, this interactive element proves <strong className="text-slate-900 font-semibold">deep understanding</strong> of how a building is put together.
+                    A flat screenshot cannot show how a building actually goes together. Pulling the model apart can.
                   </p>
                   <p>
-                    By tying the 3D explosion to the user's scroll wheel, it makes the expertise highly engaging. It visually explains that Sprinkler Design NZ doesn't just draw lines—you engineer systems that fit flawlessly between the architecture and the core structure.
+                    Sprinkler Design NZ does not just draw lines on a plan. We design systems that fit between the architecture and the structure, and we prove the fit in the model before anyone is on site.
                   </p>
                 </div>
 
@@ -163,7 +163,7 @@ export function DemoPage() {
       <div className="h-[50vh] flex flex-col gap-5 text-center items-center justify-center border-t border-slate-200 bg-slate-50">
         <h3 className="text-2xl font-semibold text-slate-900 tracking-tight">Like what you see?</h3>
         <p className="text-slate-600 max-w-md text-[15px] leading-relaxed">
-          This was built in React natively, meaning no slow loading video files or heavy images. It runs blazing fast on any device.
+          Built natively in React, so there are no video files or heavy images to load. It runs fast on any device.
         </p>
         <Link to="/" className="btn-primary mt-2">
           Take me back to the real site

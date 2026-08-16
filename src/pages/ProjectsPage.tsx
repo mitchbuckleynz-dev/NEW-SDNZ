@@ -75,7 +75,7 @@ const StatCard = ({ icon: Icon, value, label }: { icon: React.ElementType; value
 export const ProjectsPage = () => {
   usePageMeta(
     'Project Portfolio | Sprinkler Design NZ',
-    'A selection of landmark New Zealand projects showcasing our BIM fire protection design expertise — hospitals, arenas, warehouses, civic buildings and more.',
+    'A selection of landmark New Zealand projects showing our BIM fire protection design work: hospitals, arenas, warehouses, civic buildings and more.',
   );
 
   const [projects, setProjects] = useState<Project[]>([]);
@@ -118,8 +118,8 @@ export const ProjectsPage = () => {
             Project portfolio
           </h1>
           <p className="text-[15px] md:text-lg text-slate-600 max-w-2xl leading-relaxed">
-            From landmark hospitals to major infrastructure — here's a selection of the projects
-            that showcase our expertise in BIM fire protection design across New Zealand.
+            From landmark hospitals to major infrastructure, here's a selection of the projects
+            that show what we do in BIM fire protection design across New Zealand.
           </p>
 
           {/* Stats */}
@@ -202,7 +202,7 @@ export const ProjectsPage = () => {
                     {project.cover_image ? (
                       <img
                         src={project.cover_image}
-                        alt={`${project.title} — ${project.category} fire protection project`}
+                        alt={`${project.title}, ${project.category} fire protection project`}
                         className="w-full h-full object-cover"
                         loading="lazy"
                       />

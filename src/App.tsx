@@ -48,31 +48,44 @@ const Hero = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
       >
-        <p className="eyebrow justify-center mb-5">Trusted Fire Protection Experts · New Zealand</p>
+        <p className="eyebrow justify-center mb-5">35 Years · 500+ New Zealand Projects · 22 Landmarks</p>
 
         <h1 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight leading-tight mb-6">
-          Fire protection design that keeps your project moving.
+          Fire protection design that clears consent and survives site.
         </h1>
 
-        <p className="text-[15px] md:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto mb-9">
-          Sprinklers, fire alarms &amp; detection, hydrants, and hose reels &amp; extinguishers — designed in BIM, compliant with NZ standards, delivered by decades of industry expertise.
+        <p className="text-[15px] md:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto mb-8">
+          Sprinklers, alarms, hydrants and hose reels in one clash-checked BIM model, PS1 included. We design only, so there's no install arm pushing the spec up.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="flex justify-center">
           <Link to="/estimate" id="hero-estimate-cta" className="btn-primary">
-            Get an instant estimate
+            Get my indicative fee
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
-          <Link to="/contact" id="hero-contact-cta" className="btn-ghost">
-            Talk to us
-          </Link>
         </div>
+
+        <p className="mt-4 text-sm text-slate-500 max-w-xl mx-auto">
+          Tell us about the building and we'll email an indicative fee range in under a minute. No obligation, and no sales call unless you ask for one.
+        </p>
+
+        <p className="mt-2 text-sm text-slate-500">
+          Prefer to talk it through?{' '}
+          <a href="tel:0800113996" className="font-medium text-[#3e7d1c] hover:opacity-80">
+            Call 0800 113 996
+          </a>{' '}
+          or{' '}
+          <Link to="/contact" id="hero-contact-cta" className="font-medium text-[#3e7d1c] hover:opacity-80">
+            send us a message
+          </Link>
+          .
+        </p>
       </motion.div>
     </div>
 
     {/* Stats bar */}
-    <div className="max-w-4xl mx-auto px-5 mt-16 md:mt-20">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-slate-200 pt-10">
+    <div className="max-w-4xl mx-auto px-5 mt-10 md:mt-12">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-slate-200 pt-8">
         {STATS.map((stat) => (
           <AnimatedStat key={stat.label} value={stat.value} label={stat.label} />
         ))}
@@ -114,7 +127,7 @@ const ServicesOverview = () => (
           to="/services"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-[#3e7d1c] transition-opacity duration-150 hover:opacity-80"
         >
-          Explore all services — consulting, BIM coordination, scanning &amp; more
+          Explore all services: consulting, BIM coordination, scanning and more
           <ArrowRight className="w-4 h-4" aria-hidden="true" />
         </Link>
       </div>
@@ -160,7 +173,7 @@ const HeadStart = () => (
           id="head-start-heading"
           className="text-xl font-semibold text-slate-900 tracking-tight m-0"
         >
-          Head Start — four free tools for sprinkler fitters
+          Head Start: four free tools for sprinkler fitters
         </h2>
         <p className="mt-1 text-sm text-slate-600 m-0">
           Head spacing, obstruction rules, drawing scale and cut lengths, built to the standard. Live
@@ -197,7 +210,7 @@ const WhyUs = () => (
           />
           <div className="absolute -bottom-5 right-6 figure-block !py-3 !px-5 bg-white">
             <p className="eyebrow justify-center mb-0.5">Years Expertise</p>
-            <p className="text-2xl font-bold text-slate-900 tabular-nums">30+</p>
+            <p className="text-2xl font-bold text-slate-900 tabular-nums">35+</p>
           </div>
         </div>
 
@@ -207,13 +220,13 @@ const WhyUs = () => (
             Independent expertise, from trade floor to BIM model
           </h2>
           <p className="text-slate-600 text-[15px] leading-relaxed mb-7">
-            With decades of industry expertise, Sprinkler Design NZ provides comprehensive solutions including professional consulting, BIM coordination, and construction documentation. We pride ourselves on attention to detail and precision, ensuring each project is executed to the highest standard.
+            Sprinkler Design NZ brings decades of industry experience to consulting, BIM coordination and construction documentation. We work to a high level of detail and precision on every project.
           </p>
 
           <div className="space-y-3 mb-8">
             {[
               'High-quality, efficient fire protection services',
-              'Cost-effective solutions tailored to your unique needs',
+              'Cost-effective design, scoped to what the project actually needs',
               'Advanced BIM coordination & clash detection using Revit',
               'Independent consultancy with no conflicts of interest',
               'PS1 authorship and PS4 construction monitoring',
@@ -246,7 +259,7 @@ const Sectors = () => (
         Every building type, nationwide
       </h2>
       <p className="text-[15px] text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10">
-        From landmark hospitals and stadiums to warehouses and apartment towers — our portfolio spans New Zealand's most demanding occupancies.
+        From landmark hospitals and stadiums to warehouses and apartment towers, our portfolio spans some of New Zealand's most demanding occupancies.
       </p>
 
       <div className="flex flex-wrap justify-center gap-2 mb-10">

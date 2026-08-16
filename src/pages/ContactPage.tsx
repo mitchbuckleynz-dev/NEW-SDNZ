@@ -9,7 +9,7 @@ import { Navbar, Footer, usePageMeta } from '../components/site';
 export function ContactPage() {
   usePageMeta(
     'Contact Us | Sprinkler Design NZ',
-    'Get in touch with Sprinkler Design NZ — call 0800 113 996 or send us a message for an obligation-free consultation on your fire protection design.',
+    'Get in touch with Sprinkler Design NZ. Call 0800 113 996 or send us a message for an obligation-free consultation on your fire protection design.',
   );
 
   const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', phone: '', subject: '', message: '', submitted: false });
@@ -105,10 +105,10 @@ export function ContactPage() {
               <div>
                 <p className="eyebrow mb-4">Get In Touch</p>
                 <h1 id="contact-heading" className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight leading-tight mb-4">
-                  Let's discuss your next project
+                  Talk to us about your project
                 </h1>
                 <p className="text-[15px] md:text-lg text-slate-600 mb-10 leading-relaxed">
-                  Ready to elevate your fire protection design? Get in touch with our experts today for an obligation-free consultation.
+                  Tell us about the building and where the project is up to. We'll come back with a straight answer on how we can help. No obligation.
                 </p>
 
                 <div className="space-y-6">
@@ -144,7 +144,7 @@ export function ContactPage() {
                       <CheckCircle2 className="w-8 h-8" aria-hidden="true" />
                     </div>
                     <h2 className="text-2xl font-semibold text-slate-900 mb-2">Message sent</h2>
-                    <p className="text-slate-600 text-[15px] mb-4">Thank you for reaching out. We'll be in touch shortly.</p>
+                    <p className="text-slate-600 text-[15px] mb-4">Thanks for getting in touch. We'll come back to you shortly.</p>
                     <p className="text-slate-500 text-sm">
                       Need us sooner? Call <a href="tel:0800113996" className="text-[#3e7d1c] font-medium">0800 113 996</a>.
                     </p>
@@ -213,7 +213,7 @@ export function ContactPage() {
                         id="contact-subject"
                         type="text"
                         className="input-field"
-                        placeholder="Project Inquiry / Quote Request"
+                        placeholder="Project enquiry / quote request"
                         value={formState.subject}
                         onChange={(e) => setFormState((p) => ({ ...p, subject: e.target.value }))}
                       />

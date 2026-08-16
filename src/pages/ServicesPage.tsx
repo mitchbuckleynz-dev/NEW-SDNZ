@@ -12,7 +12,7 @@ import { DISCIPLINES, PROCESS_STAGES, SERVICES } from '../data/content';
 export function ServicesPage() {
   usePageMeta(
     'Services | Sprinkler Design NZ',
-    'Fire sprinkler, alarm & detection, hydrant, and hose reel & extinguisher design to NZ standards — plus BIM coordination, consulting, and 3D scanning.',
+    'Fire sprinkler, alarm & detection, hydrant, and hose reel & extinguisher design to NZ standards, plus BIM coordination, consulting and 3D scanning.',
   );
 
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -29,7 +29,7 @@ export function ServicesPage() {
               Fire protection design, end to end
             </h1>
             <p className="text-[15px] md:text-lg text-slate-600 leading-relaxed">
-              Four active fire protection disciplines, one coordinated BIM workflow — from first concept to consented, tender-ready documentation.
+              Four active fire protection disciplines in one coordinated BIM workflow, from first concept to consented, tender-ready documentation.
             </p>
           </div>
         </section>
@@ -66,7 +66,7 @@ export function ServicesPage() {
                 A design process that de-risks your programme
               </h2>
               <p className="text-[15px] text-slate-600 leading-relaxed">
-                Fire protection designed early and staged deliberately — so consent, tender, and construction each get exactly what they need.
+                Fire protection designed early and staged deliberately, so consent, tender and construction each get exactly what they need.
               </p>
             </div>
 

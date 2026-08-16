@@ -184,7 +184,7 @@ export function EstimateForm() {
         return setError(`Please enter the floor area for section ${i + 1}.`);
       if (a > MAX_AREA_M2)
         return setError(
-          `Section ${i + 1} is larger than we can estimate online — please contact us directly.`,
+          `Section ${i + 1} is larger than we can estimate online. Please contact us directly.`,
         );
     }
     setStep('details');
@@ -509,14 +509,14 @@ function Confirmation({
         <CheckCircle2 className="w-8 h-8" aria-hidden="true" />
       </div>
       <h2 className="text-2xl font-semibold text-slate-900 mb-2">
-        {isRange ? 'Your estimate is on its way' : "Thanks — we'll be in touch"}
+        {isRange ? 'Your estimate is on its way' : "Thanks, we'll be in touch"}
       </h2>
       <p className="mx-auto max-w-md text-sm leading-relaxed text-slate-600">
         {isRange ? (
           <>
             {emailed ? "We've emailed" : "We're emailing"} your indicative fee range to{' '}
             <span className="font-medium text-slate-900">{email}</span>. It should
-            arrive within a couple of minutes — check your spam folder if you don't see it.
+            arrive within a couple of minutes. Check your spam folder if you don't see it.
           </>
         ) : (
           <>

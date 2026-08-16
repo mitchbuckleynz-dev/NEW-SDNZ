@@ -21,25 +21,25 @@ export const DISCIPLINES = [
     key: 'sprinkler',
     icon: Droplets,
     title: 'Fire Sprinklers',
-    desc: 'Automatic fire sprinkler system design to NZS 4541 and NZS 4515 — wet pipe, dry pipe, deluge, preaction and ESFR systems for every occupancy.',
+    desc: 'Automatic fire sprinkler system design to NZS 4541 and NZS 4515. Wet pipe, dry pipe, deluge, preaction and ESFR systems for every occupancy.',
   },
   {
     key: 'alarm',
     icon: BellRing,
     title: 'Fire Alarms & Detection',
-    desc: 'Fire detection and alarm system design to NZS 4512 — smoke, heat and aspirating detection, zoned and analogue-addressable systems.',
+    desc: 'Fire detection and alarm system design to NZS 4512. Smoke, heat and aspirating detection, zoned and analogue-addressable systems.',
   },
   {
     key: 'hydrant',
     icon: Flame,
     title: 'Hydrants',
-    desc: 'Fire hydrant system design to NZS 4510 — risers, couplings, and pumping arrangements coordinated with FENZ requirements.',
+    desc: 'Fire hydrant system design to NZS 4510, with risers, couplings and pumping arrangements coordinated with FENZ requirements.',
   },
   {
     key: 'hoffe',
     icon: FireExtinguisher,
     title: 'Hose Reels & Extinguishers',
-    desc: 'Hand-operated firefighting equipment layouts to NZS 4503 — hose reels and portable extinguishers placed for coverage and compliance.',
+    desc: 'Hand-operated firefighting equipment layouts to NZS 4503. Hose reels and portable extinguishers placed for coverage and compliance.',
   },
 ];
 
@@ -49,7 +49,7 @@ export const PROCESS_STAGES = [
   { name: 'Developed', desc: 'Preliminary layouts and coordination with architecture, structure, and services.' },
   { name: 'Detailed', desc: 'Full BIM design, hydraulic calculations, and clash-free construction documentation.' },
   { name: 'Consent', desc: 'PS1 authorship and documentation to satisfy building consent authorities.' },
-  { name: 'Tender', desc: 'Precise, comparable tender packages — contractors price the same defined scope.' },
+  { name: 'Tender', desc: 'Precise, comparable tender packages, so contractors price the same defined scope.' },
 ];
 
 // ─── Capabilities (the six service offerings) ─────────────────────────────────
@@ -78,8 +78,8 @@ export const SERVICES = [
   {
     icon: Zap,
     title: 'Special Hazards',
-    shortDesc: 'Bespoke fire suppression solutions for high-risk and complex environments.',
-    detail: 'Our team specialises in designing comprehensive fire protection systems tailored to the unique requirements of special hazards environments including gas suppression, foam, and water spray systems.',
+    shortDesc: 'Purpose-designed fire suppression for high-risk and complex environments.',
+    detail: 'We specialise in fire protection systems for special hazards environments, including gas suppression, foam, and water spray systems.',
     tags: ['Gas Suppression', 'Foam Systems', 'Water Spray', 'Deluge'],
   },
   {
@@ -172,8 +172,8 @@ export const FAQS = [
   },
   {
     question: 'Do you design residential fire sprinkler systems?',
-    answer: 'Yes. While we specialise in large commercial, industrial, and government projects, we also design residential fire sprinkler systems for apartments, townhouses, rural properties, and high-rise residential buildings — all to NZS 4541, NZS 4515, and NZS 4517. We run our residential sector under a separate brand. For more information on our residential services, visit resiguard.co.nz.',
-    answerNode: (<>Yes. While we specialise in large commercial, industrial, and government projects, we also design residential fire sprinkler systems for apartments, townhouses, rural properties, and high-rise residential buildings — all to NZS 4541, NZS 4515, and NZS 4517. We run our residential sector under a separate brand. For more information on our residential services, visit{' '}<a href="https://www.resiguard.co.nz" target="_blank" rel="noopener noreferrer" className="text-[#3e7d1c] underline underline-offset-2 transition-colors hover:opacity-80">resiguard.co.nz</a>.</>),
+    answer: 'Yes. While we specialise in large commercial, industrial and government projects, we also design residential fire sprinkler systems for apartments, townhouses, rural properties and high-rise residential buildings, all to NZS 4541, NZS 4515 and NZS 4517. We run our residential sector under a separate brand. For more information on our residential services, visit resiguard.co.nz.',
+    answerNode: (<>Yes. While we specialise in large commercial, industrial and government projects, we also design residential fire sprinkler systems for apartments, townhouses, rural properties and high-rise residential buildings, all to NZS 4541, NZS 4515 and NZS 4517. We run our residential sector under a separate brand. For more information on our residential services, visit{' '}<a href="https://www.resiguard.co.nz" target="_blank" rel="noopener noreferrer" className="text-[#3e7d1c] underline underline-offset-2 transition-colors hover:opacity-80">resiguard.co.nz</a>.</>),
   },
   {
     question: 'What areas of New Zealand do you service?',
@@ -197,12 +197,12 @@ export const SOFTWARE = [
 
 // ─── Compliance / standards ───────────────────────────────────────────────────
 export const STANDARDS = [
-  { code: 'NZS 4541', desc: 'Automatic fire sprinkler systems — our core design standard.' },
+  { code: 'NZS 4541', desc: 'Automatic fire sprinkler systems, our core design standard.' },
   { code: 'NZS 4515', desc: 'Fire sprinkler systems for life safety in sleeping occupancies.' },
   { code: 'NZS 4517', desc: 'Fire sprinkler systems for houses.' },
   { code: 'NZS 4512', desc: 'Fire detection and alarm systems in buildings.' },
   { code: 'NZS 4510', desc: 'Fire hydrant systems for buildings.' },
-  { code: 'NZS 4503', desc: 'Hand-operated firefighting equipment — hose reels and extinguishers.' },
+  { code: 'NZS 4503', desc: 'Hand-operated firefighting equipment: hose reels and extinguishers.' },
   { code: 'NZBC C1–C6', desc: 'New Zealand Building Code protection-from-fire clauses.' },
   { code: 'PS1 / PS4', desc: 'Producer statements for design and construction monitoring.' },
 ];

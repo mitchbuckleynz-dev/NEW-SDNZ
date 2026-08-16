@@ -20,7 +20,7 @@ const TOOLS = [
     name: 'Sprinkler Spacer',
     standard: 'Spacing & coverage',
     blurb:
-      'Room dimensions in, head count and spacings out — with every wall and between-head distance checked against the standard.',
+      'Room dimensions in, head count and spacings out, with every wall and between-head distance checked against the standard.',
     onsite: 'Know how many heads a room takes before you start setting out.',
   },
   {
@@ -28,7 +28,7 @@ const TOOLS = [
     name: 'Obstruction Calculator',
     standard: 'Obstruction rules',
     blurb:
-      'One sprinkler against one obstruction, resolved against the published obstruction rules — and it tells you how far to move the head if it fails.',
+      'One sprinkler against one obstruction, resolved against the published obstruction rules. If it fails, it tells you how far to move the head.',
     onsite: 'Settle the beam argument on the spot, with the reasoning shown.',
   },
   {
@@ -51,7 +51,7 @@ const TOOLS = [
 
 const STEPS = [
   { icon: UserPlus, title: 'Register', text: 'Name, company, region, phone, email. Takes a minute.' },
-  { icon: Mail, title: 'Confirm your email', text: 'Tap the link we send you. That link is the key — no approval queue, no waiting on us.' },
+  { icon: Mail, title: 'Confirm your email', text: 'Tap the link we send you. That link is the key. No approval queue, no waiting on us.' },
   { icon: Smartphone, title: 'Add to home screen', text: 'It installs like an app. No store, no download, no updates to chase.' },
 ];
 
@@ -66,7 +66,7 @@ const STANDARDS = [
 export function ToolsPage() {
   usePageMeta(
     'Head Start | Free tools for NZ sprinkler fitters',
-    'Four free fire protection tools for New Zealand sprinkler fitters — head spacing, obstruction rules, drawing scale and sloped pipe cut lengths. Built by Sprinkler Design NZ.',
+    'Four free fire protection tools for New Zealand sprinkler fitters: head spacing, obstruction rules, drawing scale and sloped pipe cut lengths. Built by Sprinkler Design NZ.',
   );
 
   return (
@@ -85,7 +85,7 @@ export function ToolsPage() {
               </h1>
               <p className="text-[15px] md:text-lg text-slate-600 leading-relaxed mb-5 max-w-xl">
                 Head spacing. Obstruction rules. Drawing scale. Sloped pipe cut lengths. Four tools that
-                answer the questions you actually stop and work out on site — on the phone that&apos;s
+                answer the questions you actually stop and work out on site, on the phone that&apos;s
                 already in your pocket.
               </p>
               <p className="text-[15px] text-slate-500 leading-relaxed mb-8 max-w-xl">
@@ -167,7 +167,7 @@ export function ToolsPage() {
               </div>
             </div>
             <p className="mt-8 text-[15px] text-slate-600 leading-relaxed max-w-xl mx-auto">
-              Mitch started as a sprinkler fitter in 2004 and worked through the trade — fitting,
+              Mitch started as a sprinkler fitter in 2004 and worked through the trade: fitting,
               estimating, contracts, then design. Head Start is the set of tools he wanted on the job and
               never had. It&apos;s free to the industry because the industry is better when the numbers are
               right the first time.
@@ -199,7 +199,7 @@ export function ToolsPage() {
               ))}
             </div>
             <p className="mt-7 text-center text-sm text-slate-500 leading-relaxed max-w-xl mx-auto">
-              We ask who you are so we know who&apos;s using it — that&apos;s the whole reason for the
+              We ask who you are so we know who&apos;s using it. That&apos;s the whole reason for the
               login. Your details are only ever used to contact you about Head Start.
             </p>
           </div>
@@ -214,8 +214,8 @@ export function ToolsPage() {
                 Built on the printed tables, not rules of thumb
               </h2>
               <p className="text-[15px] text-slate-600 leading-relaxed">
-                The rules come from the same standard your design is assessed against — transcribed,
-                tested, and shown with their working on screen.
+                The rules come from the same standard your design is assessed against, transcribed and
+                tested, with the working shown on screen.
               </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
@@ -243,8 +243,8 @@ export function ToolsPage() {
                 Free. Register once, use all four.
               </h2>
               <p className="text-slate-600 mb-8 max-w-xl mx-auto text-[15px] leading-relaxed">
-                All four tools are live. Sprinkler Spacer, Obstruction, Drawing Scale and Sloped Pipe
-                — one registration gets you the lot.
+                All four tools are live: Sprinkler Spacer, Obstruction, Drawing Scale and Sloped Pipe.
+                One registration gets you the lot.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a href={APP_URL} className="btn-primary" id="tools-footer-cta">

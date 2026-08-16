@@ -169,7 +169,7 @@ export const Footer = () => (
             </span>
           </Link>
           <p className="text-slate-500 text-sm leading-relaxed">
-            Leading the way in BIM-driven fire protection design and consulting across New Zealand. Decades of expertise at your service.
+            BIM-driven fire protection design and consulting, across New Zealand. Decades of trade and design experience behind every job.
           </p>
           <div className="flex gap-1">
             {/* p-3 + w-5 icon ≈ 44px touch target */}
@@ -258,7 +258,7 @@ export const CtaBand = ({ heading, sub }: { heading?: string; sub?: string }) =>
           {heading ?? 'Know your fire protection costs in minutes'}
         </h2>
         <p className="text-slate-600 mb-8 max-w-xl mx-auto text-[15px] leading-relaxed">
-          {sub ?? 'Get an instant, indicative design fee range for your project — or talk to our team for an obligation-free consultation.'}
+          {sub ?? 'Get an instant, indicative design fee range for your project, or talk to our team for an obligation-free consultation.'}
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link to="/estimate" className="btn-primary">

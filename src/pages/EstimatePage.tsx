@@ -27,7 +27,7 @@ const DISCLAIMER_TEXT =
 export function EstimatePage() {
   usePageMeta(
     'Get an Instant Estimate | Sprinkler Design NZ',
-    'Get an instant, indicative fire protection design fee range for your project — sprinklers, alarms, hydrants, hose reels & extinguishers.',
+    'Get an instant, indicative fire protection design fee range for your project: sprinklers, alarms, hydrants, hose reels & extinguishers.',
   );
 
   return (
@@ -43,7 +43,7 @@ export function EstimatePage() {
             </h1>
             <p className="text-[15px] md:text-lg text-slate-600 leading-relaxed mb-3">
               Tell us about your building and we'll email you an indicative design
-              fee range in under a minute — no obligation.
+              fee range in under a minute. No obligation.
             </p>
             <p className="text-slate-500 text-sm m-0">
               {SCOPE_TEXT}{' '}

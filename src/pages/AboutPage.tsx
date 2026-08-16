@@ -12,7 +12,7 @@ import { TEAM, FAQS, SOFTWARE, STANDARDS } from '../data/content';
 export function AboutPage() {
   usePageMeta(
     'About Us | Sprinkler Design NZ',
-    "Meet the team behind New Zealand's leading independent BIM fire protection design consultancy — our approach, compliance credentials, and careers.",
+    "Meet the team behind New Zealand's leading independent BIM fire protection design consultancy. Our approach, compliance credentials and careers.",
   );
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -47,7 +47,7 @@ export function AboutPage() {
                 />
                 <div className="absolute -bottom-5 right-6 figure-block !py-3 !px-5 bg-white">
                   <p className="eyebrow justify-center mb-0.5">Years Expertise</p>
-                  <p className="text-2xl font-bold text-slate-900 tabular-nums">30+</p>
+                  <p className="text-2xl font-bold text-slate-900 tabular-nums">35+</p>
                 </div>
               </div>
 
@@ -57,13 +57,13 @@ export function AboutPage() {
                   From trade floor to BIM model
                 </h2>
                 <p className="text-slate-600 text-[15px] leading-relaxed mb-7">
-                  We started on the tools — fitting, estimating, and managing fire protection installations — before bringing that knowledge into design. It means our documentation is buildable, our coordination is realistic, and our advice is independent, with no conflicts of interest.
+                  We started on the tools (fitting, estimating and managing fire protection installations) before bringing that knowledge into design. It means our documentation is buildable, our coordination is realistic, and our advice is independent, with no conflicts of interest.
                 </p>
 
                 <div className="space-y-3">
                   {[
                     'High-quality, efficient fire protection services',
-                    'Cost-effective solutions tailored to your unique needs',
+                    'Cost-effective design, scoped to what the project actually needs',
                     'Decades of deep industry knowledge across all facets',
                     'Advanced BIM coordination & clash detection using Revit',
                     'Independent consultancy with no conflicts of interest',
@@ -210,19 +210,19 @@ export function AboutPage() {
         {/* ── Careers ── */}
         <section id="careers" className="py-20 md:py-24 bg-white" aria-labelledby="careers-heading">
           <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
-            <p className="eyebrow justify-center mb-4">Join Our Team</p>
+            <p className="eyebrow justify-center mb-4">Careers</p>
             <h2 id="careers-heading" className="text-2xl font-semibold text-slate-900 tracking-tight mb-4">
-              Propel your career
+              We're hiring sprinkler designers
             </h2>
             <p className="text-slate-600 text-[15px] mb-10 max-w-xl mx-auto leading-relaxed">
-              We are currently looking for passionate <strong className="text-slate-900 font-semibold">Sprinkler Designers</strong>. If you have experience in fire protection design or BIM coordination, we'd love to hear from you.
+              If you have experience in fire protection design or BIM coordination, get in touch. Tell us what you've worked on and we'll take it from there.
             </p>
 
             <div className="grid md:grid-cols-3 gap-5 mb-10 text-left">
               {[
-                { icon: Award, title: 'Industry Leaders', desc: 'Work on landmark NZ projects including hospitals, arenas, prisons, and civic centres.' },
-                { icon: Zap, title: 'Cutting-Edge Tech', desc: 'Use the latest BIM tools - Revit, BIM360, Revizto, and point cloud scanning.' },
-                { icon: Users, title: 'Great Team Culture', desc: 'A tight-knit, experienced team that values learning, mentorship, and work-life balance.' },
+                { icon: Award, title: 'Landmark Projects', desc: 'Work on major NZ projects including hospitals, arenas, prisons and civic centres.' },
+                { icon: Zap, title: 'The Right Tools', desc: 'Revit, BIM360, Revizto and point cloud scanning, on properly resourced kit.' },
+                { icon: Users, title: 'A Small Team', desc: 'An experienced team that backs learning and mentoring, and respects your time outside work.' },
               ].map((item) => (
                 <div key={item.title} className="card p-6">
                   <div className="w-11 h-11 flex items-center justify-center mb-4 rounded-lg tint-green">
