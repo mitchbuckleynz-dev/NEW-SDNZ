@@ -114,7 +114,20 @@ function isValidPhone(raw: string): boolean {
 }
 
 type Step = 'project' | 'details' | 'done';
-type Outcome = 'range' | 'contact';
+
+/**
+ * What came back from the CRM.
+ *
+ *  range   — commercial work, priced by the fee engine; a range is emailed.
+ *  fixed   — a standalone home, priced at one of Resiguard's fixed design
+ *            packages; the package details are emailed.
+ *  contact — too variable to price automatically; a human follows up.
+ *
+ * These strings are the API contract, not internal names. `fixed` must
+ * match what the CRM serialises, or this screen silently falls back to the
+ * "we'll be in touch" copy while a priced email is already on its way.
+ */
+type Outcome = 'range' | 'contact' | 'fixed';
 
 interface SectionState {
   buildingType: string;
@@ -143,6 +156,10 @@ export function EstimateForm() {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [outcome, setOutcome] = useState<Outcome | null>(null);
+  /** Resiguard package name ("Essentials" / "Standard") on a `fixed`
+   *  outcome. Optional by design — the CRM may omit it, so every use
+   *  falls back to generic wording rather than rendering a gap. */
+  const [tier, setTier] = useState<string | null>(null);
   const [emailed, setEmailed] = useState(false);
 
   // Ad-campaign attribution, captured once from the landing URL so it
@@ -244,7 +261,7 @@ export function EstimateForm() {
         }),
       });
       const data = (await res.json().catch(() => null)) as
-        | { ok: boolean; outcome?: Outcome; emailed?: boolean; error?: string }
+        | { ok: boolean; outcome?: Outcome; tier?: string; emailed?: boolean; error?: string }
         | null;
       if (!res.ok || !data?.ok) {
         setError(data?.error ?? 'Something went wrong. Please try again.');
@@ -254,6 +271,7 @@ export function EstimateForm() {
       // Lead captured — fire the LinkedIn ad conversion.
       fireLinkedInConversion();
       setOutcome(data.outcome ?? 'range');
+      setTier(data.tier?.trim() ? data.tier.trim() : null);
       setEmailed(Boolean(data.emailed));
       setStep('done');
     } catch {
@@ -266,6 +284,7 @@ export function EstimateForm() {
     return (
       <Confirmation
         outcome={outcome ?? 'range'}
+        tier={tier}
         email={email}
         emailed={emailed}
         isResidential={sections.some((s) => s.buildingType === HOUSE_KEY)}
@@ -519,41 +538,56 @@ export function EstimateForm() {
 
 function Confirmation({
   outcome,
+  tier,
   email,
   emailed,
   isResidential,
 }: {
   outcome: Outcome;
+  /** Package name on a `fixed` outcome; null if the CRM didn't send one. */
+  tier: string | null;
   email: string;
   emailed: boolean;
   /** Lead picked a standalone home — hand them across to Resiguard. */
   isResidential: boolean;
 }) {
-  const isRange = outcome === 'range';
+  const heading =
+    outcome === 'fixed'
+      ? `Your ${tier ?? 'fixed-price'} package is on its way`
+      : outcome === 'range'
+        ? 'Your estimate is on its way'
+        : "Thanks, we'll be in touch";
+
+  // What's landing in their inbox. Only the `contact` path has nothing.
+  const emailedThing =
+    outcome === 'fixed'
+      ? tier
+        ? `the full details of your ${tier} design package`
+        : 'the full details of your design package'
+      : 'your indicative fee range';
+
   return (
     <div className="card p-8 text-center">
       <div className="check-badge mx-auto mb-5">
         <CheckCircle2 className="w-8 h-8" aria-hidden="true" />
       </div>
-      <h2 className="text-2xl font-semibold text-slate-900 mb-2">
-        {isRange ? 'Your estimate is on its way' : "Thanks, we'll be in touch"}
-      </h2>
+      <h2 className="text-2xl font-semibold text-slate-900 mb-2">{heading}</h2>
       <p className="mx-auto max-w-md text-sm leading-relaxed text-slate-600">
-        {isRange ? (
-          <>
-            {emailed ? "We've emailed" : "We're emailing"} your indicative fee range to{' '}
-            <span className="font-medium text-slate-900">{email}</span>. It should
-            arrive within a couple of minutes. Check your spam folder if you don't see it.
-          </>
-        ) : (
+        {outcome === 'contact' ? (
           <>
             Your project needs a closer look before we can put a number on it. One
             of our team will review your details and get back to you within 1 business day.
           </>
+        ) : (
+          <>
+            {emailed ? "We've emailed" : "We're emailing"} {emailedThing} to{' '}
+            <span className="font-medium text-slate-900">{email}</span>. It should
+            arrive within a couple of minutes. Check your spam folder if you don't see it.
+          </>
         )}
       </p>
 
-      {isResidential && <ResiguardHandoff />}
+      {isResidential && <ResiguardHandoff priced={outcome === 'fixed'} />}
     </div>
   );
 }
@@ -561,21 +595,35 @@ function Confirmation({
 /**
  * Shown after a lead tells us their project is a standalone home. We design
  * those under Resiguard, where the work is sold as fixed-price packages
- * rather than a consulting fee — so the useful next step is their pricing,
- * not another conversation with us.
+ * rather than a consulting fee.
+ *
+ * `priced` says whether they already have a number: once a package is on
+ * its way, re-explaining that we price homes differently is noise — what
+ * they want next is what the package covers.
  */
-function ResiguardHandoff() {
+function ResiguardHandoff({ priced }: { priced: boolean }) {
   return (
     <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50/60 p-5 text-left">
       <span className="eyebrow !text-slate-500">One more thing</span>
       <h3 className="mt-1 text-base font-semibold text-slate-900">
-        We design homes under Resiguard
+        {priced ? 'Your home is designed by Resiguard' : 'We design homes under Resiguard'}
       </h3>
       <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
-        Standalone homes are designed to NZS 4517 and run under our residential
-        brand, Resiguard. It's the same team — but the design is sold as a
-        fixed-price package rather than a consulting fee, so you can see what
-        you'll pay up front.
+        {priced ? (
+          <>
+            Homes are designed to NZS 4517 under our residential brand,
+            Resiguard — the same team, to the same standards. Your package
+            covers the design, the consent documentation, and training your
+            plumber to install it.
+          </>
+        ) : (
+          <>
+            Standalone homes are designed to NZS 4517 and run under our
+            residential brand, Resiguard. It's the same team — but the design
+            is sold as a fixed-price package rather than a consulting fee, so
+            you can see what you'll pay up front.
+          </>
+        )}
       </p>
       <a
         href={RESIGUARD_URL}
@@ -583,7 +631,7 @@ function ResiguardHandoff() {
         rel="noopener noreferrer"
         className="btn-primary mt-4 inline-block w-full text-center no-underline sm:w-auto"
       >
-        See Resiguard's design packages
+        {priced ? "See what's included" : "See Resiguard's design packages"}
       </a>
     </div>
   );
