@@ -46,6 +46,22 @@ const ATTRIBUTION_PARAMS = [
   'li_fat_id',
 ] as const;
 
+/* ---- Residential hand-off ---- */
+
+/** Building-type key for a standalone home. Residential design is run
+ *  under a separate brand (Resiguard, NZS 4517) with its own fixed-price
+ *  packages, so these leads get handed across once we've captured them.
+ *
+ *  Until the CRM carries a matching key, the engine treats this as an
+ *  unknown use and routes the lead to the "we'll be in touch" path —
+ *  which is the right outcome: better no number than a commercial one. */
+const HOUSE_KEY = 'house';
+
+/** Deep link to Resiguard's design packages, tagged so the referral shows
+ *  up in their analytics as coming from this estimator. */
+const RESIGUARD_URL =
+  'https://www.resiguard.co.nz/?utm_source=sprinklerdesign&utm_medium=referral&utm_campaign=estimator_house#pricing';
+
 /* ---- Catalogue (keys MUST match the CRM's building-types.ts) ---- */
 
 const DISCIPLINES = [
@@ -59,6 +75,7 @@ type DisciplineKey = (typeof DISCIPLINES)[number]['key'];
 
 const BUILDING_TYPES = [
   { key: 'office', label: 'Office / commercial', hint: 'Offices, professional suites, fit-outs' },
+  { key: HOUSE_KEY, label: 'House / single dwelling', hint: 'A standalone home — new build, alteration or rural property' },
   { key: 'apartment', label: 'Apartment / residential', hint: 'Multi-unit residential, apartments, motels' },
   { key: 'retail', label: 'Retail / shop', hint: 'Shops, showrooms, supermarkets' },
   { key: 'hospitality', label: 'Hospitality / accommodation', hint: 'Hotels, restaurants, bars, function venues' },
@@ -246,7 +263,14 @@ export function EstimateForm() {
   }
 
   if (step === 'done') {
-    return <Confirmation outcome={outcome ?? 'range'} email={email} emailed={emailed} />;
+    return (
+      <Confirmation
+        outcome={outcome ?? 'range'}
+        email={email}
+        emailed={emailed}
+        isResidential={sections.some((s) => s.buildingType === HOUSE_KEY)}
+      />
+    );
   }
 
   return (
@@ -497,10 +521,13 @@ function Confirmation({
   outcome,
   email,
   emailed,
+  isResidential,
 }: {
   outcome: Outcome;
   email: string;
   emailed: boolean;
+  /** Lead picked a standalone home — hand them across to Resiguard. */
+  isResidential: boolean;
 }) {
   const isRange = outcome === 'range';
   return (
@@ -525,6 +552,39 @@ function Confirmation({
           </>
         )}
       </p>
+
+      {isResidential && <ResiguardHandoff />}
+    </div>
+  );
+}
+
+/**
+ * Shown after a lead tells us their project is a standalone home. We design
+ * those under Resiguard, where the work is sold as fixed-price packages
+ * rather than a consulting fee — so the useful next step is their pricing,
+ * not another conversation with us.
+ */
+function ResiguardHandoff() {
+  return (
+    <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50/60 p-5 text-left">
+      <span className="eyebrow !text-slate-500">One more thing</span>
+      <h3 className="mt-1 text-base font-semibold text-slate-900">
+        We design homes under Resiguard
+      </h3>
+      <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+        Standalone homes are designed to NZS 4517 and run under our residential
+        brand, Resiguard. It's the same team — but the design is sold as a
+        fixed-price package rather than a consulting fee, so you can see what
+        you'll pay up front.
+      </p>
+      <a
+        href={RESIGUARD_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn-primary mt-4 inline-block w-full text-center no-underline sm:w-auto"
+      >
+        See Resiguard's design packages
+      </a>
     </div>
   );
 }
